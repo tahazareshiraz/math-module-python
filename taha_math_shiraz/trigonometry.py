@@ -1,16 +1,22 @@
-from .constants import PI, TAU, EPSILON
-from .core import fabs, trunc, isclose
-from .power import sqrt
+from .constants import *
+from .power import sqrt, cbrt, pow_, exp, expm1, log1p, log, log2, log10
+from .basics import isnan, isinf, isfinite, copysign, fabs, trunc, floor, ceil, fmod, remainder, modf
+
+
+def degrees(x):
+    return x * 180.0 / PI
+
+
+
+def radians(x):
+    return x * PI / 180.0
+
 
 
 def _reduce_angle(x):
-    n = trunc(x / TAU)
-    r = x - n * TAU
-    if r > PI:
-        r -= TAU
-    elif r < -PI:
-        r += TAU
-    return r
+    k = round(x / TAU)
+    return x - k * TAU
+
 
 
 def sin(x):
@@ -18,16 +24,11 @@ def sin(x):
     term = x
     total = x
     x2 = x * x
-    k = 1
-    while True:
-        term *= -x2 / ((2 * k) * (2 * k + 1))
+    for n in range(1, 30):
+        term *= -x2 / ((2 * n) * (2 * n + 1))
         total += term
-        if fabs(term) < EPSILON * (fabs(total) + 1e-300):
-            break
-        k += 1
-        if k > 200:
-            break
     return total
+
 
 
 def cos(x):
@@ -35,65 +36,74 @@ def cos(x):
     term = 1.0
     total = 1.0
     x2 = x * x
-    k = 1
-    while True:
-        term *= -x2 / ((2 * k - 1) * (2 * k))
+    for n in range(1, 30):
+        term *= -x2 / ((2 * n - 1) * (2 * n))
         total += term
-        if fabs(term) < EPSILON * (fabs(total) + 1e-300):
-            break
-        k += 1
-        if k > 200:
-            break
     return total
+
 
 
 def tan(x):
     c = cos(x)
-    if fabs(c) < 1e-15:
+    if c == 0:
         raise ValueError("math domain error")
     return sin(x) / c
 
 
-def sec(x):
-    c = cos(x)
-    if fabs(c) < 1e-15:
+
+def sinh(x):
+    e1 = exp(x)
+    e2 = exp(-x)
+    return (e1 - e2) / 2.0
+
+
+
+def cosh(x):
+    e1 = exp(x)
+    e2 = exp(-x)
+    return (e1 + e2) / 2.0
+
+
+
+def tanh(x):
+    if x > 20:
+        return 1.0
+    if x < -20:
+        return -1.0
+    e1 = exp(x)
+    e2 = exp(-x)
+    return (e1 - e2) / (e1 + e2)
+
+
+
+def asinh(x):
+    return log(x + sqrt(x * x + 1.0))
+
+
+
+def acosh(x):
+    if x < 1:
         raise ValueError("math domain error")
-    return 1.0 / c
+    return log(x + sqrt(x * x - 1.0))
 
 
-def csc(x):
-    s = sin(x)
-    if fabs(s) < 1e-15:
+
+def atanh(x):
+    if fabs(x) >= 1:
         raise ValueError("math domain error")
-    return 1.0 / s
+    return 0.5 * log((1 + x) / (1 - x))
 
-
-def cot(x):
-    s = sin(x)
-    if fabs(s) < 1e-15:
-        raise ValueError("math domain error")
-    return cos(x) / s
 
 
 def asin(x):
     if x < -1 or x > 1:
         raise ValueError("math domain error")
-    if isclose(x, 1.0):
+    if x == 1:
         return PI / 2
-    if isclose(x, -1.0):
+    if x == -1:
         return -PI / 2
-    guess = x
-    for _ in range(100):
-        f = sin(guess) - x
-        fp = cos(guess)
-        if fabs(fp) < 1e-15:
-            break
-        new_guess = guess - f / fp
-        if isclose(new_guess, guess, rel_tol=1e-15):
-            guess = new_guess
-            break
-        guess = new_guess
-    return guess
+    return atan(x / sqrt(1 - x * x))
+
 
 
 def acos(x):
@@ -102,31 +112,34 @@ def acos(x):
     return PI / 2 - asin(x)
 
 
+
 def _atan_series(x):
-    if fabs(x) > 1:
-        sign = 1 if x > 0 else -1
-        return sign * (PI / 2) - _atan_series(1 / x)
+    total = 0.0
     term = x
-    total = x
     x2 = x * x
     k = 1
-    while True:
+    for _ in range(200):
+        total += term / k
         term *= -x2
-        contribution = term / (2 * k + 1)
-        total += contribution
-        if fabs(contribution) < EPSILON * (fabs(total) + 1e-300):
-            break
-        k += 1
-        if k > 1000:
-            break
+        k += 2
     return total
 
 
+
 def atan(x):
-    if fabs(x) <= 1:
-        return _atan_series(x)
-    sign = 1 if x > 0 else -1
-    return sign * PI / 2 - _atan_series(1 / x)
+    if x == 0:
+        return 0.0
+    neg = x < 0
+    x = fabs(x)
+    if x > 1:
+        result = PI / 2 - atan(1 / x)
+        return -result if neg else result
+    if x > 0.4142135623730951:
+        result = PI / 4 + _atan_series((x - 1) / (x + 1))
+        return -result if neg else result
+    result = _atan_series(x)
+    return -result if neg else result
+
 
 
 def atan2(y, x):
@@ -143,45 +156,18 @@ def atan2(y, x):
     return 0.0
 
 
-def degrees(x):
-    return x * 180.0 / PI
+
+def hypot(*coords):
+    total = 0.0
+    for c in coords:
+        total += c * c
+    return sqrt(total)
 
 
-def radians(x):
-    return x * PI / 180.0
 
+def dist(p, q):
+    total = 0.0
+    for a, b in zip(p, q):
+        total += (a - b) ** 2
+    return sqrt(total)
 
-def sinc(x):
-    if x == 0:
-        return 1.0
-    return sin(PI * x) / (PI * x)
-
-
-def versin(x):
-    return 1 - cos(x)
-
-
-def coversin(x):
-    return 1 - sin(x)
-
-
-def haversine(x):
-    return (1 - cos(x)) / 2
-
-
-def haversine_distance(lat1, lon1, lat2, lon2, radius=6371000):
-    phi1 = radians(lat1)
-    phi2 = radians(lat2)
-    dphi = radians(lat2 - lat1)
-    dlambda = radians(lon2 - lon1)
-    a = haversine(dphi) + cos(phi1) * cos(phi2) * haversine(dlambda)
-    c = 2 * atan2(sqrt(a), sqrt(1 - a))
-    return radius * c
-
-
-def exsec(x):
-    return sec(x) - 1
-
-
-def excsc(x):
-    return csc(x) - 1

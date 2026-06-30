@@ -1,117 +1,83 @@
-from .core import factorial, comb
+from .aggregates import comb
+from .numtheory_core import factorial
 
 
-def double_factorial(n):
-    if n < 0:
-        raise ValueError("double_factorial() not defined for negative values")
-    result = 1
-    while n > 1:
-        result *= n
-        n -= 2
-    return result
+def permutations_list(iterable, r=None):
+    pool = list(iterable)
+    n = len(pool)
+    r = n if r is None else r
+    if r > n:
+        return
+    indices = list(range(n))
+    cycles = list(range(n, n - r, -1))
+    yield tuple(pool[i] for i in indices[:r])
+    while n:
+        for i in reversed(range(r)):
+            cycles[i] -= 1
+            if cycles[i] == 0:
+                indices[i:] = indices[i + 1:] + indices[i:i + 1]
+                cycles[i] = n - i
+            else:
+                j = cycles[i]
+                indices[i], indices[-j] = indices[-j], indices[i]
+                yield tuple(pool[i] for i in indices[:r])
+                break
+        else:
+            return
 
 
-def fibonacci(n):
-    if n < 0:
-        raise ValueError("fibonacci() not defined for negative values")
-    a, b = 0, 1
-    for _ in range(n):
-        a, b = b, a + b
-    return a
+
+def combinations_list(iterable, r):
+    pool = list(iterable)
+    n = len(pool)
+    if r > n:
+        return
+    indices = list(range(r))
+    yield tuple(pool[i] for i in indices)
+    while True:
+        for i in reversed(range(r)):
+            if indices[i] != i + n - r:
+                break
+        else:
+            return
+        indices[i] += 1
+        for j in range(i + 1, r):
+            indices[j] = indices[j - 1] + 1
+        yield tuple(pool[i] for i in indices)
 
 
-def fibonacci_sequence(count):
-    sequence = []
-    a, b = 0, 1
-    for _ in range(count):
-        sequence.append(a)
-        a, b = b, a + b
-    return sequence
+
+def cartesian_product(*pools):
+    result = [[]]
+    for pool in pools:
+        result = [x + [y] for x in result for y in pool]
+    for prod_item in result:
+        yield tuple(prod_item)
 
 
-def lucas_number(n):
-    if n < 0:
-        raise ValueError("lucas_number() not defined for negative values")
-    a, b = 2, 1
-    for _ in range(n):
-        a, b = b, a + b
-    return a
+
+def power_set(iterable):
+    items = list(iterable)
+    n = len(items)
+    for mask in range(1 << n):
+        subset = [items[i] for i in range(n) if mask & (1 << i)]
+        yield subset
 
 
-def lucas_sequence(count):
-    sequence = []
-    a, b = 2, 1
-    for _ in range(count):
-        sequence.append(a)
-        a, b = b, a + b
-    return sequence
 
-
-def tribonacci(n):
-    if n < 0:
-        raise ValueError("tribonacci() not defined for negative values")
-    a, b, c = 0, 1, 1
-    for _ in range(n):
-        a, b, c = b, c, a + b + c
-    return a
-
-
-def catalan_number(n):
-    if n < 0:
-        raise ValueError("catalan_number() not defined for negative values")
-    return comb(2 * n, n) // (n + 1)
-
-
-def catalan_sequence(count):
-    return [catalan_number(i) for i in range(count)]
-
-
-def binomial_coefficient(n, k):
-    return comb(n, k)
-
-
-def multinomial_coefficient(n, *ks):
-    if sum(ks) != n:
-        raise ValueError("sum of ks must equal n")
-    result = factorial(n)
-    for k in ks:
-        result //= factorial(k)
-    return result
-
-
-def stirling_second(n, k):
-    if k == 0 and n == 0:
-        return 1
-    if k == 0 or k > n:
-        return 0
-    if k == n:
-        return 1
-    return k * stirling_second(n - 1, k) + stirling_second(n - 1, k - 1)
-
-
-def stirling_first(n, k):
-    if n == 0 and k == 0:
-        return 1
-    if n == 0 or k == 0:
-        return 0
-    if k > n:
-        return 0
-    return stirling_first(n - 1, k - 1) - (n - 1) * stirling_first(n - 1, k)
-
-
-def bell_number(n):
+def partitions(n, k=None):
+    if k is None or k > n:
+        k = n
     if n == 0:
-        return 1
-    triangle = [[0] * (n + 1) for _ in range(n + 1)]
-    triangle[0][0] = 1
-    for i in range(1, n + 1):
-        triangle[i][0] = triangle[i - 1][i - 1]
-        for j in range(1, i + 1):
-            triangle[i][j] = triangle[i][j - 1] + triangle[i - 1][j - 1]
-    return triangle[n][0]
+        yield ()
+        return
+    for first in range(min(n, k), 0, -1):
+        for rest in partitions(n - first, first):
+            yield (first,) + rest
 
 
-def derangements(n):
+
+def derangement_count(n):
     if n == 0:
         return 1
     if n == 1:
@@ -122,97 +88,32 @@ def derangements(n):
     return b
 
 
-def partitions_count(n):
-    if n < 0:
-        return 0
-    dp = [0] * (n + 1)
-    dp[0] = 1
-    for k in range(1, n + 1):
-        for i in range(k, n + 1):
-            dp[i] += dp[i - k]
-    return dp[n]
 
-
-def compositions_count(n):
-    if n <= 0:
-        return 0
-    return 2 ** (n - 1)
-
-
-def generate_permutations(items):
-    items = list(items)
-    if len(items) <= 1:
-        return [items]
-    result = []
-    for i in range(len(items)):
-        rest = items[:i] + items[i + 1:]
-        for p in generate_permutations(rest):
-            result.append([items[i]] + p)
-    return result
-
-
-def generate_combinations(items, k):
-    items = list(items)
-    n = len(items)
-    if k > n or k < 0:
-        return []
-    if k == 0:
-        return [[]]
-    result = []
-
-    def backtrack(start, path):
-        if len(path) == k:
-            result.append(path[:])
-            return
-        for i in range(start, n):
-            path.append(items[i])
-            backtrack(i + 1, path)
-            path.pop()
-
-    backtrack(0, [])
-    return result
-
-
-def generate_combinations_with_repetition(items, k):
-    items = list(items)
-    n = len(items)
-    result = []
-
-    def backtrack(start, path):
-        if len(path) == k:
-            result.append(path[:])
-            return
-        for i in range(start, n):
-            path.append(items[i])
-            backtrack(i, path)
-            path.pop()
-
-    backtrack(0, [])
-    return result
-
-
-def pascals_triangle(rows):
-    triangle = []
-    for i in range(rows):
-        row = [comb(i, j) for j in range(i + 1)]
-        triangle.append(row)
-    return triangle
-
-
-def motzkin_number(n):
-    if n == 0:
+def stirling_second(n, k):
+    if n == 0 and k == 0:
         return 1
-    if n == 1:
-        return 1
-    dp = [0] * (n + 1)
-    dp[0] = 1
-    dp[1] = 1
-    for i in range(2, n + 1):
-        dp[i] = dp[i - 1] + sum(dp[k] * dp[i - 2 - k] for k in range(i - 1))
-    return dp[n]
-
-
-def narayana_number(n, k):
-    if k < 1 or k > n:
+    if n == 0 or k == 0:
         return 0
-    return (comb(n, k) * comb(n, k - 1)) // n
+    if k > n:
+        return 0
+    total = 0
+    for j in range(k + 1):
+        sign = 1 if (k - j) % 2 == 0 else -1
+        total += sign * comb(k, j) * (j ** n)
+    return total // factorial(k)
+
+
+
+_bell_cache = {0: 1}
+
+
+
+def bell_number(n):
+    if n in _bell_cache:
+        return _bell_cache[n]
+    total = 0
+    for k in range(n):
+        total += comb(n - 1, k) * bell_number(k)
+    _bell_cache[n] = total
+    return total
+

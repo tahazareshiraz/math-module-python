@@ -1,31 +1,76 @@
 # taha-math-shiraz
 
-یک کتابخانه‌ی ریاضی برای پایتون که می‌توانید جایگزین ماژول `math` کنید، با این تفاوت که امکانات بسیار بیشتری ارائه می‌دهد. تمام توابع آن از پایه نوشته شده و به هیچ کتابخانه‌ی دیگری وابسته نیست.
+A pure-Python library that reimplements Python's built-in `math` module
+(and the `statistics` module) completely from scratch, without relying on
+`math` or `cmath` internally, plus a large collection of extra utilities:
+number theory, linear algebra, geometry, calculus, interpolation,
+probability distributions, base conversions, and more.
 
-## نحوه‌ی استفاده
+## Installation
 
-کافی‌ست پوشه‌ی `taha_math_shiraz` را کنار پروژه‌تان قرار دهید و در فایل پایتون خود این‌گونه آن را فراخوانی کنید:
+```bash
+pip install .
+```
+
+or simply copy the `taha_math_shiraz/` folder next to your project.
+
+## Usage
 
 ```python
 import taha_math_shiraz as tms
 
-tms.sqrt(16)          # رادیکال
-tms.sin(tms.pi / 2)   # سینوس
-tms.factorial(5)      # فاکتوریل
+print(tms.PI)
+print(tms.sqrt(2))
+print(tms.sin(tms.PI / 2))
+print(tms.factorial(10))
+print(tms.is_prime(97))
+print(tms.mean([1, 2, 3, 4, 5]))
+
+m = tms.Matrix([[1, 2], [3, 4]])
+print(m.determinant())
 ```
 
-## چه امکاناتی دارد؟
+You can also import only what you need from a specific submodule:
 
-علاوه بر تمام توابع معمول ریاضی (رادیکال، توان، لگاریتم، مثلثاتی، فاکتوریل، گرد کردن و غیره)، این بخش‌ها هم اضافه شده‌اند:
+```python
+from taha_math_shiraz.trigonometry import sin, cos
+from taha_math_shiraz.linalg import Vector, Matrix
+from taha_math_shiraz.numbertheory import is_prime, fibonacci
+```
 
-- **آمار و احتمال**: میانگین، واریانس، انحراف معیار، رگرسیون خطی، همبستگی، توزیع‌های آماری (نرمال، دوجمله‌ای، پواسون و...)
-- **نظریه اعداد**: تشخیص اعداد اول، تجزیه به عوامل اول، مقسوم‌علیه‌ها، دنباله فیبوناچی
-- **جبر خطی**: کار با ماتریس و بردار (ضرب، دترمینان، وارون کردن، حل دستگاه معادلات)
-- **هندسه**: مساحت و محیط اشکال مختلف، فاصله‌ی بین نقاط، تقاطع خطوط
-- **مالی**: محاسبه‌ی بهره مرکب، اقساط وام، ارزش فعلی و آینده‌ی پول
-- **فیزیک**: فرمول‌های حرکت، انرژی، الکتریسیته
-- **گراف**: یافتن کوتاه‌ترین مسیر بین دو نقطه (Dijkstra و BFS)
-- **مرتب‌سازی و جست‌وجو**: چند الگوریتم مرتب‌سازی معروف
-- ابزارهای کوچک متعدد دیگر مانند تبدیل واحد، انیمیشن (easing)، اعداد رومی، رمزنگاری ساده و موارد دیگر
+## Package layout
 
-اگر دنبال تابع خاصی می‌گردید که در لیست بالا نیامده، احتمالاً همچنان در کتابخانه موجود است؛ چون دامنه‌ی آن بسیار فراتر از این چند دسته‌بندی‌ست.
+```
+taha_math_shiraz/
+    __init__.py        re-exports the full public API
+    constants.py        PI, E, TAU, INF, NAN, ...
+    basics.py            fabs, floor, ceil, fmod, isnan, isinf, ...
+    numtheory_core.py    factorial, gcd, lcm, isqrt
+    power.py             sqrt, cbrt, pow_, exp, log, log2, log10, ...
+    trigonometry.py      sin, cos, tan, asin, acos, atan, sinh, cosh, ...
+    aggregates.py        fsum, prod, isclose, comb, perm
+    special.py           gamma, lgamma, erf, erfc, frexp, ldexp, ...
+    numbertheory.py      primes, divisors, totient, fibonacci, polygonal numbers, ...
+    statistics_mod.py    mean, median, mode, variance, stdev, correlation, ...
+    probability.py       binomial/normal/poisson/exponential distributions
+    linalg.py            Vector, Matrix, Complex and related helpers
+    combinatorics.py     permutations, combinations, partitions, bell numbers
+    geometry.py          areas, volumes, distances, line intersection, ...
+    calculus.py          derivative, integral, root-finding methods
+    conversions.py       unit conversions (temperature, distance, mass)
+    interpolation.py     Lagrange/Newton interpolation, continued fractions
+    randomutil.py        a simple linear congruential generator
+    baseconv.py          base conversion, Roman numerals
+    series.py            arithmetic/geometric series sums
+    activations.py       sigmoid, relu, clamp, lerp, smoothstep
+    metrics.py           distance metrics, cosine similarity
+```
+
+## Tests
+
+Tests live in the `tests/` folder and are split by topic, mirroring the
+package layout. Run all of them with:
+
+```bash
+python -m unittest discover -s tests -v
+```
