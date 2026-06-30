@@ -1,2 +1,22 @@
-# math-module-tahazare
-A from-scratch Python math library with 540+ functions — far beyond the standard math module. Includes statistics, probability, linear algebra, graph algorithms, physics, finance, and geometry, with zero dependency on Python's math module.
+# taha-math-shiraz
+
+کتابخانه‌ای ریاضی فراتر از ماژول استاندارد `math` پایتون، با ۴۰۰۰ خط کد و ۵۴۰+ تابع/کلاس، بدون هیچ کامنتی و بدون وابستگی به ماژول `math` (تمام الگوریتم‌ها از پایه پیاده‌سازی شده‌اند).
+
+## نصب
+```bash
+pip install .
+```
+
+## استفاده
+```python
+import taha_math_shiraz as tms
+
+tms.sqrt(16)
+tms.dijkstra(graph, 'a')
+tms.compound_interest(1000, 0.05, 12, 5)
+tms.matrix_inverse([[1,2],[3,4]])
+tms.bezier_cubic((0,0),(0,1),(1,1),(1,0), 0.5)
+```
+
+## بخش‌ها
+پایه و توان و ریشه، نمایی و لگاریتمی، مثلثاتی و هذلولوی، ترکیبیات، نظریه اعداد (اعداد اول، Miller-Rabin، RSA-style mod_pow، CRT)، آمار و احتمال (توزیع‌های دوجمله‌ای، پواسون، نرمال، گاما، بتا، وایبول، کوشی)، تولیدکننده اعداد شبه‌تصادفی (LCG، XorShift)، فیزیک (مکانیک، الکتریسیته، نسبیت، تشعشع)، مالی (بهره مرکب، NPV، IRR، Black-Scholes)، بهینه‌سازی (گرادیان کاهشی، تبرید شبیه‌سازی‌شده، Golden Section)، جبر خطی (LU، QR، Cholesky، توان‌یابی)، گراف (BFS، DFS، Dijkstra، Bellman-Ford، Floyd-Warshall)، مرتب‌سازی و جست‌وجو، فاصله‌های رشته‌ای (Levenshtein، Hamming، Jaccard)، تولیدکننده‌های ترکیبیاتی، هندسه دوبعدی و سه‌بعدی، کواترنیون، چندجمله‌ای‌های ویژه (چبیشف، لژاندر، هرمیت)، توابع easing برای انیمیشن، Bezier و Catmull-Rom، و ابزارهای آماری پیشرفته (چولگی، کشیدگی، رگرسیون).
