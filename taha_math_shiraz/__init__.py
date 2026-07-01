@@ -1,4 +1,4 @@
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 from .constants import *
 from .basics import *
@@ -21,4 +21,9 @@ from .baseconv import *
 from .series import *
 from .activations import *
 from .metrics import *
+from .polynomial import *
+from .datatypes import *
+from .crypto import *
+from .graph import *
+from .algorithms import *
 

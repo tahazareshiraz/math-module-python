@@ -1,8 +1,4 @@
-from .basics import isnan, isinf, isfinite, copysign, fabs, trunc, floor, ceil, 
-fmod, remainder, modf
-
-
-
+from .basics import isnan, isinf, isfinite, copysign, fabs, trunc, floor, ceil, fmod, remainder, modf
 
 
 def derivative(f, x, h=1e-6):
