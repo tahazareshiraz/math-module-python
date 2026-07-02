@@ -1,7 +1,7 @@
 import unittest
 import math
 import statistics
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestSpecialFunctions(unittest.TestCase):
@@ -26,7 +26,6 @@ class TestSpecialFunctions(unittest.TestCase):
         nums = [0.1] * 10
         self.assertAlmostEqual(tms.fsum(nums), math.fsum(nums), places=9)
         self.assertEqual(tms.prod([1, 2, 3, 4]), math.prod([1, 2, 3, 4]))
-
 
 
 if __name__ == "__main__":

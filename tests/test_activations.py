@@ -1,7 +1,7 @@
 import unittest
 import math
 import statistics
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestActivationsAndMisc(unittest.TestCase):
@@ -23,7 +23,6 @@ class TestActivationsAndMisc(unittest.TestCase):
         self.assertEqual(tms.sign(5), 1)
         self.assertEqual(tms.sign(-5), -1)
         self.assertEqual(tms.sign(0), 0)
-
 
 
 if __name__ == "__main__":

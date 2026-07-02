@@ -1,5 +1,5 @@
 import unittest
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestPolynomial(unittest.TestCase):
@@ -25,7 +25,9 @@ class TestPolynomial(unittest.TestCase):
         self.assertAlmostEqual(tms.poly_eval(p, 3), 9.0)
 
     def test_integral_definite(self):
-        self.assertAlmostEqual(tms.poly_integral_definite([1, 0, 0], 0, 3), 9.0, places=6)
+        self.assertAlmostEqual(
+            tms.poly_integral_definite([1, 0, 0], 0, 3), 9.0, places=6
+        )
 
     def test_roots_quadratic(self):
         r1, r2 = tms.poly_roots_quadratic(1, -5, 6)
@@ -287,7 +289,9 @@ class TestAlgorithms(unittest.TestCase):
         self.assertEqual(tms.coin_change([2], 3), -1)
 
     def test_lis(self):
-        self.assertEqual(tms.longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18]), 4)
+        self.assertEqual(
+            tms.longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18]), 4
+        )
 
     def test_max_subarray(self):
         self.assertEqual(tms.max_subarray([-2, 1, -3, 4, -1, 2, 1, -5, 4]), 6)
@@ -305,7 +309,9 @@ class TestAlgorithms(unittest.TestCase):
         self.assertAlmostEqual(result[2], 4.0)
 
     def test_sliding_window_max(self):
-        self.assertEqual(tms.sliding_window_max([1, 3, -1, -3, 5, 3, 6, 7], 3), [3, 3, 5, 5, 6, 7])
+        self.assertEqual(
+            tms.sliding_window_max([1, 3, -1, -3, 5, 3, 6, 7], 3), [3, 3, 5, 5, 6, 7]
+        )
 
     def test_flatten(self):
         self.assertEqual(tms.flatten([1, [2, [3, 4], 5]]), [1, 2, 3, 4, 5])

@@ -1,7 +1,7 @@
 import unittest
 import math
 import statistics
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestPowerLog(unittest.TestCase):
@@ -51,7 +51,6 @@ class TestPowerLog(unittest.TestCase):
             tms.log(-1)
         with self.assertRaises(ValueError):
             tms.log(0)
-
 
 
 if __name__ == "__main__":

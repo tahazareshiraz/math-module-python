@@ -63,7 +63,8 @@ taha_math_shiraz/
     baseconv.py          base conversion, Roman numerals
     series.py            arithmetic/geometric series sums
     activations.py       sigmoid, relu, clamp, lerp, smoothstep
-    metrics.py           distance metrics, cosine similarity
+    metrics.py           distRan rg --files
+    ساختار پروژه را پیدا کردم: یک پکیج taha_math_shiraz با چندین ماژول عددی/ریاضی و یک مجموعه تست نسبتاً کامل. الان README و فایل‌های اصلی ورودی پکیج را می‌خوانم تا بفهمم API عمومی دقیقاً چیست و بعد سراغ ماژول‌های داخلی می‌روم.ance metrics, cosine similarity
 ```
 
 ## Tests
@@ -73,4 +74,110 @@ package layout. Run all of them with:
 
 ```bash
 python -m unittest discover -s tests -v
+```
+
+```
+math-module-tahazare
+├─ README.md
+├─ taha_math_shiraz
+│  ├─ activations.py
+│  ├─ aggregates.py
+│  ├─ algorithms.py
+│  ├─ baseconv.py
+│  ├─ basics.py
+│  ├─ calculus.py
+│  ├─ combinatorics.py
+│  ├─ constants.py
+│  ├─ conversions.py
+│  ├─ crypto.py
+│  ├─ datatypes.py
+│  ├─ geometry.py
+│  ├─ graph.py
+│  ├─ interpolation.py
+│  ├─ linalg.py
+│  ├─ metrics.py
+│  ├─ numbertheory.py
+│  ├─ numtheory_core.py
+│  ├─ polynomial.py
+│  ├─ power.py
+│  ├─ probability.py
+│  ├─ randomutil.py
+│  ├─ series.py
+│  ├─ special.py
+│  ├─ statistics_mod.py
+│  ├─ trigonometry.py
+│  ├─ __init__.py
+│  └─ __pycache__
+│     ├─ activations.cpython-313.pyc
+│     ├─ activations.cpython-314.pyc
+│     ├─ aggregates.cpython-313.pyc
+│     ├─ aggregates.cpython-314.pyc
+│     ├─ algorithms.cpython-313.pyc
+│     ├─ algorithms.cpython-314.pyc
+│     ├─ baseconv.cpython-313.pyc
+│     ├─ baseconv.cpython-314.pyc
+│     ├─ basics.cpython-313.pyc
+│     ├─ basics.cpython-314.pyc
+│     ├─ calculus.cpython-313.pyc
+│     ├─ calculus.cpython-314.pyc
+│     ├─ combinatorics.cpython-313.pyc
+│     ├─ combinatorics.cpython-314.pyc
+│     ├─ constants.cpython-313.pyc
+│     ├─ constants.cpython-314.pyc
+│     ├─ conversions.cpython-313.pyc
+│     ├─ conversions.cpython-314.pyc
+│     ├─ crypto.cpython-313.pyc
+│     ├─ crypto.cpython-314.pyc
+│     ├─ datatypes.cpython-313.pyc
+│     ├─ datatypes.cpython-314.pyc
+│     ├─ geometry.cpython-313.pyc
+│     ├─ geometry.cpython-314.pyc
+│     ├─ graph.cpython-313.pyc
+│     ├─ graph.cpython-314.pyc
+│     ├─ interpolation.cpython-313.pyc
+│     ├─ interpolation.cpython-314.pyc
+│     ├─ linalg.cpython-313.pyc
+│     ├─ linalg.cpython-314.pyc
+│     ├─ metrics.cpython-313.pyc
+│     ├─ metrics.cpython-314.pyc
+│     ├─ numbertheory.cpython-313.pyc
+│     ├─ numbertheory.cpython-314.pyc
+│     ├─ numtheory_core.cpython-313.pyc
+│     ├─ numtheory_core.cpython-314.pyc
+│     ├─ polynomial.cpython-313.pyc
+│     ├─ polynomial.cpython-314.pyc
+│     ├─ power.cpython-313.pyc
+│     ├─ power.cpython-314.pyc
+│     ├─ probability.cpython-313.pyc
+│     ├─ probability.cpython-314.pyc
+│     ├─ randomutil.cpython-313.pyc
+│     ├─ randomutil.cpython-314.pyc
+│     ├─ series.cpython-313.pyc
+│     ├─ series.cpython-314.pyc
+│     ├─ special.cpython-313.pyc
+│     ├─ special.cpython-314.pyc
+│     ├─ statistics_mod.cpython-313.pyc
+│     ├─ statistics_mod.cpython-314.pyc
+│     ├─ trigonometry.cpython-313.pyc
+│     ├─ trigonometry.cpython-314.pyc
+│     ├─ __init__.cpython-313.pyc
+│     └─ __init__.cpython-314.pyc
+├─ temp.py
+└─ tests
+   ├─ test_activations.py
+   ├─ test_basics.py
+   ├─ test_calculus.py
+   ├─ test_constants.py
+   ├─ test_geometry.py
+   ├─ test_interpolation_conversion.py
+   ├─ test_legacy_self_checks.py
+   ├─ test_linalg.py
+   ├─ test_new_modules.py
+   ├─ test_numbertheory.py
+   ├─ test_power.py
+   ├─ test_special.py
+   ├─ test_statistics.py
+   ├─ test_trigonometry.py
+   └─ __init__.py
+
 ```

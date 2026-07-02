@@ -1,7 +1,7 @@
 import unittest
 import math
 import statistics
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestConstants(unittest.TestCase):
@@ -19,7 +19,6 @@ class TestConstants(unittest.TestCase):
 
     def test_nan(self):
         self.assertTrue(math.isnan(tms.NAN))
-
 
 
 if __name__ == "__main__":

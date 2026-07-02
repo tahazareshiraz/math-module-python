@@ -1,7 +1,7 @@
 import unittest
 import math
 import statistics
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestInterpolationAndConversion(unittest.TestCase):
@@ -23,7 +23,6 @@ class TestInterpolationAndConversion(unittest.TestCase):
         self.assertAlmostEqual(tms.convert_celsius_to_fahrenheit(0), 32.0)
         self.assertAlmostEqual(tms.convert_fahrenheit_to_celsius(212), 100.0)
         self.assertAlmostEqual(tms.convert_celsius_to_kelvin(0), 273.15)
-
 
 
 if __name__ == "__main__":

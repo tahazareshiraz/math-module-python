@@ -1,7 +1,7 @@
 import unittest
 import math
 import statistics
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestVectorMatrixComplex(unittest.TestCase):
@@ -48,7 +48,6 @@ class TestVectorMatrixComplex(unittest.TestCase):
         product = z1 * z2
         self.assertEqual(product.real, 3 * 1 - 4 * 2)
         self.assertEqual(product.imag, 3 * 2 + 4 * 1)
-
 
 
 if __name__ == "__main__":

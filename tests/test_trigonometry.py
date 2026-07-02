@@ -1,7 +1,7 @@
 import unittest
 import math
 import statistics
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestTrigonometry(unittest.TestCase):
@@ -60,7 +60,6 @@ class TestTrigonometry(unittest.TestCase):
             tms.acosh(0)
         with self.assertRaises(ValueError):
             tms.atanh(1.5)
-
 
 
 if __name__ == "__main__":

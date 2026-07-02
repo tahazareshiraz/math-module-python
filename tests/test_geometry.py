@@ -1,7 +1,7 @@
 import unittest
 import math
 import statistics
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestGeometry(unittest.TestCase):
@@ -29,7 +29,6 @@ class TestGeometry(unittest.TestCase):
         p = tms.line_intersection((0, 0), (4, 4), (0, 4), (4, 0))
         self.assertAlmostEqual(p[0], 2.0)
         self.assertAlmostEqual(p[1], 2.0)
-
 
 
 if __name__ == "__main__":

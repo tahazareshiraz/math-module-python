@@ -1,7 +1,7 @@
 import unittest
 import math
 import statistics
-import taha_math_shiraz as tms
+import src.taha_math_shiraz as tms
 
 
 class TestCombinatoricsNumberTheory(unittest.TestCase):
@@ -26,7 +26,9 @@ class TestCombinatoricsNumberTheory(unittest.TestCase):
                 self.assertEqual(tms.perm(n, k), math.perm(n, k))
 
     def test_is_prime(self):
-        primes_under_100 = [p for p in range(2, 100) if all(p % i for i in range(2, int(p ** 0.5) + 1))]
+        primes_under_100 = [
+            p for p in range(2, 100) if all(p % i for i in range(2, int(p**0.5) + 1))
+        ]
         detected = [p for p in range(2, 100) if tms.is_prime(p)]
         self.assertEqual(primes_under_100, detected)
 
@@ -70,7 +72,6 @@ class TestCombinatoricsNumberTheory(unittest.TestCase):
         for n in range(1, 30):
             self.assertEqual(tms.triangular_number(n), n * (n + 1) // 2)
             self.assertEqual(tms.square_number(n), n * n)
-
 
 
 if __name__ == "__main__":
