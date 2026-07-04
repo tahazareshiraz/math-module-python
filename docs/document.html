@@ -1,0 +1,1011 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مستند کتابخانه taha_math_shiraz</title>
+  <link rel="stylesheet" href="style_persian.css">
+</head>
+<body>
+  <aside class="toc" id="toc">
+    <div class="toc-head">
+      <strong>فهرست مطالب</strong>
+      <span class="small">سرفصل‌ها</span>
+    </div>
+    <input id="filter" class="search" type="text" placeholder="جست‌وجو در مستند..." />
+    <ul id="tocList"></ul>
+  </aside>
+
+  <div class="page">
+    <header class="hero">
+      <h1>مستند کامل کتابخانه <code>taha_math_shiraz</code></h1>
+      <p>این صفحه، مرجع اصلی کتابخانه است و برای هر ماژول توضیح، مثال، خروجی و نکات کاربردی ارائه می‌کند. هدف این است که هر بخش هم برای مطالعه‌ی سریع مناسب باشد و هم برای رجوع دقیق هنگام توسعه.</p>
+      <p class="meta">این سند همه‌ی ماژول‌ها، توابع، کلاس‌ها و متدهای اصلی کتابخانه را به فارسی توضیح می‌دهد.</p>
+      <div class="note">
+        <strong>نکته:</strong> این کتابخانه یک بسته‌ی آموزشی و عمومی برای ریاضیات، عددی‌سازی، گراف، رمزنگاری ساده و ابزارهای کمکی است. بعضی بخش‌ها برای استفاده‌ی آموزشی طراحی شده‌اند.
+      </div>
+    </header>
+
+    <section id="overview">
+      <h2>نمای کلی کتابخانه</h2>
+      <p>فایل <code>__init__.py</code> همه‌ی ماژول‌ها را re-export می‌کند تا بتوانی از ریشه‌ی بسته با نام <code>tms</code> استفاده کنی.</p>
+      <pre><code>import taha_math_shiraz as tms
+
+print(tms.PI)
+print(tms.sqrt(2))
+print(tms.Graph())</code></pre>
+    </section>
+
+    <div id="content"></div>
+  </div>
+  <script>
+    const docs = [
+      ["constants","ثابت‌ها","constants.py",[
+        ["PI","عدد پی با دقت بالا"],["TAU","دو برابر PI"],["E","پایه لگاریتم طبیعی"],["INF","بی‌نهایت مثبت"],["NAN","مقدار NaN"],["SQRT2","جذر ۲"],["LN2","لگاریتم طبیعی ۲"],["LN10","لگاریتم طبیعی ۱۰"]
+      ]],
+      ["basics","توابع پایه","basics.py",[
+        ["isnan(x)","بررسی NaN"],["isinf(x)","بررسی بی‌نهایت"],["isfinite(x)","بررسی finite"],["copysign(x, y)","انتقال علامت y به x"],["fabs(x)","قدر مطلق"],["trunc(x)","بخش صحیح"],["floor(x)","کف"],["ceil(x)","سقف"],["fmod(x, y)","باقیمانده اعشاری"],["remainder(x, y)","باقیمانده بر پایه گردکردن"],["modf(x)","تفکیک کسری و صحیح"]
+      ]],
+      ["numtheory_core","هسته نظریه اعداد","numtheory_core.py",[
+        ["factorial(n)","فاکتوریل"],["gcd(*args)","ب.م.م چند عدد"],["lcm(*args)","ک.م.م چند عدد"],["isqrt(n)","جذر صحیح"]
+      ]],
+      ["power","توان، ریشه و لگاریتم","power.py",[
+        ["sqrt(x)","جذر تقریبی"],["cbrt(x)","ریشه سوم تقریبی"],["pow_(x, y)","توان‌دهی عمومی"],["exp(x)","تابع نمایی"],["expm1(x)","exp(x) - 1"],["log1p(x)","log(1+x)"],["log(x, base=None)","لگاریتم طبیعی یا با پایه"],["log2(x)","لگاریتم پایه ۲"],["log10(x)","لگاریتم پایه ۱۰"]
+      ]],
+      ["trigonometry","مثلثات و هایپربولیک","trigonometry.py",[
+        ["degrees(x)","تبدیل رادیان به درجه"],["radians(x)","تبدیل درجه به رادیان"],["sin(x)","سینوس"],["cos(x)","کسینوس"],["tan(x)","تانژانت"],["sinh(x)","سینوس هایپربولیک"],["cosh(x)","کسینوس هایپربولیک"],["tanh(x)","تانژانت هایپربولیک"],["asinh(x)","آرک‌سینوس هایپربولیک"],["acosh(x)","آرک‌کسینوس هایپربولیک"],["atanh(x)","آرک‌تانژانت هایپربولیک"],["asin(x)","آرک‌سینوس"],["acos(x)","آرک‌کسینوس"],["atan(x)","آرک‌تانژانت"],["atan2(y, x)","زاویه با توجه به ربع"],["hypot(*coords)","طول بردار"],["dist(p, q)","فاصله اقلیدسی"]
+      ]],
+      ["aggregates","تجمیع و ترکیبیات پایه","aggregates.py",[
+        ["fsum(iterable)","جمع دقیق‌تر"],["prod(iterable, start=1)","حاصل‌ضرب"],["isclose(a, b, rel_tol, abs_tol)","مقایسه تقریبی"],["comb(n, k)","ترکیب"],["perm(n, k=None)","جایگشت"]
+      ]],
+      ["special","توابع ویژه","special.py",[
+        ["lgamma(x)","لگاریتم گاما"],["gamma(x)","تابع گاما"],["erf(x)","تابع خطا"],["erfc(x)","متمم تابع خطا"],["frexp(x)","مانتیسا و توان"],["ldexp(m, e)","ترکیب مانتیسا و توان"],["nextafter(x, y)","گام بعدی شناور"],["ulp(x)","واحد آخر در مکان"],["signbit(x)","بیت علامت"]
+      ]],
+      ["numbertheory","نظریه اعداد پیشرفته","numbertheory.py",[
+        ["is_prime(n)","تشخیص اول بودن"],["next_prime(n)","عدد اول بعدی"],["prev_prime(n)","عدد اول قبلی"],["prime_factors(n)","فهرست عوامل اول"],["prime_factorization(n)","نمایش توان‌دار عوامل"],["divisors(n)","مقسوم‌علیه‌ها"],["divisor_count(n)","تعداد مقسوم‌علیه‌ها"],["divisor_sum(n)","جمع مقسوم‌علیه‌ها"],["is_perfect(n)","عدد کامل"],["is_abundant(n)","عدد فزونی"],["is_deficient(n)","عدد کمبود"],["euler_totient(n)","تابع فی"],["mobius(n)","تابع موبیوس"],["fibonacci(n)","فیبوناچی"],["lucas(n)","لوکاس"],["tribonacci(n)","تری‌باناکی"],["catalan(n)","کاتالان"],["bernoulli(n)","برنولی"],["harmonic(n)","عدد هارمونیک"],["digit_sum(n)","جمع ارقام"],["digit_product(n)","حاصل‌ضرب ارقام"],["digital_root(n)","ریشه دیجیتال"],["is_palindrome_number(n)","پالیندروم بودن"],["is_armstrong(n)","آرمسترانگ بودن"],["collatz_length(n)","طول دنباله کلاتز"],["is_power_of_two(n)","توان ۲ بودن"],["bit_length(n)","طول دودویی"],["popcount(n)","تعداد بیت‌های ۱"],["extended_gcd(a, b)","اقلیدس گسترش‌یافته"],["mod_inverse(a, m)","معکوس پیمانه‌ای"],["mod_pow(base, exp, mod)","توان پیمانه‌ای"],["chinese_remainder(remainders, moduli)","باقیمانده چینی"],["is_coprime(a, b)","هم‌اول بودن"],["jacobi_symbol(a, n)","نماد ژاکوبی"],["sieve_of_eratosthenes(limit)","غربال اراتوستن"],["count_primes_below(limit)","شمارش اعداد اول"],["goldbach_pair(n)","زوج گلدباخ"],["is_amicable_pair(a, b)","زوج دوستانه"],["find_amicable_pairs(limit)","یافتن زوج‌های دوستانه"],["polygonal_number(s, n)","عدد چندضلعی عمومی"],["triangular_number(n)","عدد مثلثی"],["square_number(n)","عدد مربعی"],["pentagonal_number(n)","عدد پنج‌ضلعی"],["hexagonal_number(n)","عدد شش‌ضلعی"],["heptagonal_number(n)","عدد هفت‌ضلعی"],["octagonal_number(n)","عدد هشت‌ضلعی"],["is_triangular(n)","مثلثی بودن"],["is_square(n)","مربعی بودن"],["is_pentagonal(n)","پنج‌ضلعی بودن"],["pascal_triangle_row(n)","ردیف پاسکال"],["pascal_triangle(rows)","مثلث پاسکال"],["sum_of_squares(n)","جمع مربعات"],["sum_of_cubes(n)","جمع مکعب‌ها"],["is_perfect_square_fast(n)","بررسی سریع مربع کامل"]
+      ]],
+      ["statistics","آمار","statistics_mod.py",[
+        ["mean(data)","میانگین"],["geometric_mean(data)","میانگین هندسی"],["harmonic_mean(data)","میانگین هارمونیک"],["median(data)","میانه"],["median_low(data)","میانه پایین"],["median_high(data)","میانه بالا"],["mode(data)","نما"],["multimode(data)","چند نما"],["variance(data, xbar=None)","واریانس نمونه‌ای"],["pvariance(data, mu=None)","واریانس جامعه"],["stdev(data, xbar=None)","انحراف معیار نمونه‌ای"],["pstdev(data, mu=None)","انحراف معیار جامعه"],["covariance(x, y)","کوواریانس"],["correlation(x, y)","همبستگی"],["linear_regression(x, y)","رگرسیون خطی"],["quantiles(data, n=4)","کوانتیل‌ها"],["z_score(x, data)","نمره z"],["range_(data)","دامنه"],["midrange(data)","میان‌دامنه"],["skewness(data)","چولگی"],["kurtosis(data)","کشیدگی"]
+      ]],
+      ["probability","احتمال","probability.py",[
+        ["binomial_probability(n, k, p)","احتمال دوجمله‌ای"],["poisson_probability(lam, k)","احتمال پواسون"],["normal_pdf(x, mu=0.0, sigma=1.0)","چگالی نرمال"],["normal_cdf(x, mu=0.0, sigma=1.0)","توزیع تجمعی نرمال"],["exponential_pdf(x, lam)","چگالی نمایی"],["exponential_cdf(x, lam)","توزیع تجمعی نمایی"],["uniform_pdf(x, a, b)","چگالی یکنواخت"],["uniform_cdf(x, a, b)","توزیع تجمعی یکنواخت"],["geometric_pdf(k, p)","احتمال هندسی"],["binomial_mean(n, p)","میانگین دوجمله‌ای"],["binomial_variance(n, p)","واریانس دوجمله‌ای"]
+      ]],
+      ["linalg","جبر خطی","linalg.py",[
+        ["Vector(components)","کلاس بردار"],["Matrix(rows)","کلاس ماتریس"],["Complex(real, imag=0.0)","کلاس عدد مختلط"],["vector_projection(a, b)","پروژکشن بردار"],["vector_reflection(v, normal)","بازتاب بردار"],["matrix_power(m, n)","توان ماتریس"],["matrix_from_function(rows, cols, f)","ساخت ماتریس از تابع"],["rotation_matrix_2d(theta)","ماتریس دوران ۲بعدی"],["rotation_matrix_x(theta)","دوران حول x"],["rotation_matrix_y(theta)","دوران حول y"],["rotation_matrix_z(theta)","دوران حول z"],["scaling_matrix(sx, sy)","ماتریس مقیاس"],["translation_apply(point, dx, dy)","اعمال انتقال"]
+      ]],
+      ["geometry","هندسه","geometry.py",[
+        ["distance_2d(p1, p2)","فاصله دو نقطه در صفحه"],["distance_3d(p1, p2)","فاصله در فضا"],["triangle_area(a, b, c)","مساحت مثلث از روی اضلاع"],["triangle_area_coords(p1, p2, p3)","مساحت مثلث از مختصات"],["circle_area(r)","مساحت دایره"],["circle_circumference(r)","محیط دایره"],["sphere_volume(r)","حجم کره"],["sphere_surface_area(r)","مساحت سطح کره"],["cylinder_volume(r, h)","حجم استوانه"],["cylinder_surface_area(r, h)","مساحت سطح استوانه"],["cone_volume(r, h)","حجم مخروط"],["cone_surface_area(r, h)","مساحت سطح مخروط"],["regular_polygon_area(n, side)","مساحت چندضلعی منتظم"],["regular_polygon_perimeter(n, side)","محیط چندضلعی منتظم"],["law_of_cosines(a, b, gamma_angle)","قانون کسینوس"],["law_of_sines_ratio(a, angle_a)","نسبت قانون سینوس"],["heron_perimeter(a, b, c)","جمع اضلاع مثلث"],["polygon_area_shoelace(points)","فرمول بندکفشی"],["centroid(points)","مرکز هندسی"],["is_collinear(p1, p2, p3)","هم‌خطی"],["midpoint(p1, p2)","نقطه میانی"],["slope(p1, p2)","شیب خط"],["line_intersection(p1, p2, p3, p4)","نقطه تقاطع دو خط"],["point_in_circle(p, center, r)","داخل دایره بودن"],["point_in_triangle(p, a, b, c)","داخل مثلث بودن"]
+      ]],
+      ["calculus","حسابان عددی","calculus.py",[
+        ["derivative(f, x, h=1e-6)","مشتق عددی"],["second_derivative(f, x, h=1e-4)","مشتق دوم عددی"],["integral_trapezoid(f, a, b, n=1000)","انتگرال ذوزنقه‌ای"],["integral_simpson(f, a, b, n=1000)","انتگرال سیمپسون"],["newton_raphson(f, fprime, x0, tol, max_iter)","نیوتن-رافسون"],["bisection_method(f, a, b, tol, max_iter)","روش دو نیم‌سازی"],["taylor_series_exp(x, terms=20)","تقریب e^x"],["secant_method(f, x0, x1, tol, max_iter)","روش سکانت"],["golden_section_search(f, a, b, tol)","جست‌وجوی بخش طلایی"]
+      ]],
+      ["conversions","تبدیل واحد","conversions.py",[
+        ["convert_celsius_to_fahrenheit(c)","سلسیوس به فارنهایت"],["convert_fahrenheit_to_celsius(f)","فارنهایت به سلسیوس"],["convert_celsius_to_kelvin(c)","سلسیوس به کلوین"],["convert_kelvin_to_celsius(k)","کلوین به سلسیوس"],["convert_km_to_miles(km)","کیلومتر به مایل"],["convert_miles_to_km(miles)","مایل به کیلومتر"],["convert_kg_to_pounds(kg)","کیلوگرم به پوند"],["convert_pounds_to_kg(lb)","پوند به کیلوگرم"],["convert_degrees_to_radians(d)","درجه به رادیان"],["convert_radians_to_degrees(r)","رادیان به درجه"]
+      ]],
+      ["interpolation","درون‌یابی","interpolation.py",[
+        ["lagrange_interpolation(points, x)","درون‌یابی لاگرانژ"],["newton_divided_difference(points, x)","تفاضلات تقسیم‌شده"],["linear_interpolation(x0, y0, x1, y1, x)","درون‌یابی خطی"],["bilinear_interpolation(...)","درون‌یابی دوبعدی"],["continued_fraction(x, depth=15)","کسر مسلسل"],["convergent_from_continued_fraction(terms)","همگرا از کسر مسلسل"],["egyptian_fraction(numerator, denominator)","کسر مصری"]
+      ]],
+      ["randomutil","اعداد شبه‌تصادفی","randomutil.py",[
+        ["lcg_random(seed, a=1103515245, c=12345, m=2 ** 31)","یک گام مولد LCG"],["lcg_sequence(seed, n, a=1103515245, c=12345, m=2 ** 31)","دنباله LCG"]
+      ]],
+      ["baseconv","تبدیل مبنا و رومی","baseconv.py",[
+        ["to_base(n, base)","تبدیل عدد به مبنا"],["from_base(s, base)","تبدیل از مبنا"],["roman_to_int(s)","رومی به عدد"],["int_to_roman(n)","عدد به رومی"]
+      ]],
+      ["series","سری‌ها","series.py",[
+        ["arithmetic_series_sum(a1, d, n)","جمع سری حسابی"],["geometric_series_sum(a1, r, n)","جمع سری هندسی محدود"],["infinite_geometric_series_sum(a1, r)","جمع سری هندسی نامتناهی"]
+      ]],
+      ["activations","فعال‌سازها","activations.py",[
+        ["lerp(a, b, t)","درون‌یابی خطی"],["clamp(x, lo, hi)","محدودسازی"],["smoothstep(edge0, edge1, x)","smoothstep"],["sign(x)","علامت"],["relu(x)","ReLU"],["sigmoid(x)","سیگموید"],["softplus(x)","Softplus"],["tanh_derivative(x)","مشتق tanh"],["sigmoid_derivative(x)","مشتق sigmoid"]
+      ]],
+      ["metrics","معیارهای فاصله","metrics.py",[
+        ["euclidean_norm(v)","نرم اقلیدسی"],["manhattan_distance(p1, p2)","فاصله منهتن"],["chebyshev_distance(p1, p2)","فاصله چبیشف"],["minkowski_distance(p1, p2, p)","فاصله مینکوفسکی"],["cosine_similarity(a, b)","شباهت کسینوسی"]
+      ]],
+      ["polynomial","چندجمله‌ای‌ها","polynomial.py",[
+        ["poly_eval(coeffs, x)","ارزیابی"],["poly_add(a, b)","جمع"],["poly_sub(a, b)","تفریق"],["poly_mul(a, b)","ضرب"],["poly_scale(a, s)","ضرب در اسکالر"],["poly_neg(a)","منفی"],["poly_divmod(a, b)","تقسیم طولی"],["poly_div(a, b)","خارج‌قسمت"],["poly_mod(a, b)","باقیمانده"],["poly_gcd(a, b)","ب.م.م چندجمله‌ای"],["poly_differentiate(coeffs)","مشتق"],["poly_integrate(coeffs, c=0.0)","انتگرال نامعین"],["poly_roots_quadratic(a, b, c)","ریشه‌های درجه ۲"],["poly_roots_cubic(a, b, c, d)","ریشه‌های درجه ۳"],["poly_companion_matrix(coeffs)","ماتریس همدم"],["poly_compose(f, g)","ترکیب"],["poly_from_roots(roots)","ساخت از ریشه‌ها"],["poly_degree(coeffs)","درجه"],["poly_strip(coeffs, tol=1e-12)","حذف صفرهای ابتدایی"],["poly_integral_definite(coeffs, a, b)","انتگرال معین"],["poly_to_str(coeffs, var='x')","نمایش متنی"],["poly_lagrange(points)","لاگرانژ"],["poly_chebyshev_t(n)","چبیشف نوع اول"],["poly_legendre(n)","لژاندر"],["poly_hermite(n)","هرمیت"],["poly_laguerre(n)","لاگور"]
+      ]],
+      ["datatypes","نوع‌داده‌های سفارشی","datatypes.py",[
+        ["Fraction(numerator=0, denominator=1)","کسر گویا"],["FixedDecimal(value=0, precision=2)","اعشار با دقت ثابت"],["Interval(lo, hi)","بازه عددی"],["Ratio(a, b)","نسبت ساده‌شده"]
+      ]],
+      ["crypto","رمزنگاری و هش آموزشی","crypto.py",[
+        ["caesar_encrypt(text, shift)","رمز سزار"],["caesar_decrypt(text, shift)","رمزگشایی سزار"],["caesar_bruteforce(text)","آزمایش همه شیفت‌ها"],["vigenere_encrypt(text, key)","ویژنر"],["vigenere_decrypt(text, key)","رمزگشایی ویژنر"],["atbash_encrypt(text)","آت‌بش"],["atbash_decrypt(text)","رمزگشایی آت‌بش"],["rot13(text)","ROT13"],["affine_encrypt(text, a, b)","رمز affine"],["affine_decrypt(text, a, b)","رمزگشایی affine"],["rail_fence_encrypt(text, rails)","ریل‌فنس"],["rail_fence_decrypt(text, rails)","رمزگشایی ریل‌فنس"],["columnar_encrypt(text, key)","رمز ستونی"],["simple_substitution_encrypt(text, alphabet_map)","جایگزینی ساده"],["simple_substitution_decrypt(text, alphabet_map)","رمزگشایی جایگزینی"],["is_prime_miller_rabin(n, witnesses=None)","Miller-Rabin"],["rsa_generate_keys(p, q)","تولید کلید RSA"],["rsa_encrypt(message, public_key)","رمزگذاری RSA"],["rsa_decrypt(ciphertext, private_key)","رمزگشایی RSA"],["diffie_hellman_keypair(p, g, private_key)","کلید عمومی دیفی-هلمن"],["diffie_hellman_shared_secret(public_other, private_self, p)","راز مشترک"],["xor_cipher(data, key)","رمز XOR"],["text_to_bits(text)","متن به بیت"],["bits_to_text(bits)","بیت به متن"],["hamming_distance(s1, s2)","فاصله همینگ"],["checksum_sum(data)","چک‌سام جمع"],["checksum_xor(data)","چک‌سام XOR"],["luhn_check(number)","بررسی لون"],["luhn_generate(partial)","تولید رقم کنترل لون"],["mod_hash(text, m=997)","هش پیمانه‌ای"],["rolling_hash(text, window, base=31, mod=10**9+7)","هش لغزان"],["string_similarity_coefficient(s1, s2)","ضریب شباهت رشته"]
+      ]],
+      ["graph","گراف","graph.py",[
+        ["Graph(directed=False)","کلاس گراف"],["add_vertex(v)","افزودن رأس"],["add_edge(u, v, weight=1)","افزودن یال"],["remove_edge(u, v)","حذف یال"],["remove_vertex(v)","حذف رأس"],["neighbors(v)","همسایه‌ها"],["weight(u, v)","وزن یال"],["vertices()","فهرست رأس‌ها"],["edges()","فهرست یال‌ها"],["degree(v)","درجه"],["in_degree(v)","درجه ورودی"],["out_degree(v)","درجه خروجی"],["has_edge(u, v)","وجود یال"],["bfs(start)","پیمایش سطحی"],["dfs(start)","پیمایش عمقی"],["has_path(start, end)","وجود مسیر"],["dijkstra(start)","دیجکسترا"],["shortest_path(start, end)","کوتاه‌ترین مسیر"],["bellman_ford(start)","بلمن-فورد"],["floyd_warshall()","فلوید-وارشال"],["is_connected()","همبند بودن"],["topological_sort()","مرتب‌سازی توپولوژیک"],["minimum_spanning_tree_kruskal()","درخت پوشای کمینه"],["has_cycle_undirected()","چرخه در گراف بدون‌جهت"],["is_bipartite()","دو‌بخشی بودن"],["connected_components()","مولفه‌های همبند"],["density()","چگالی"],["vertex_count()","تعداد رأس"],["edge_count()","تعداد یال"],["adjacency_matrix()","ماتریس مجاورت"],["degree_sequence()","دنباله درجات"],["eccentricity(v)","اکسانتریسیته"],["diameter()","قطر"],["radius()","شعاع"],["center()","مرکز"],["graph_from_edge_list(edges, directed=False)","ساخت از یال‌ها"],["graph_complete(n)","گراف کامل"],["graph_cycle(n)","گراف چرخه‌ای"],["graph_path(n)","گراف مسیر"],["graph_star(n)","گراف ستاره‌ای"],["traveling_salesman_brute(graph)","فروشنده دوره‌گرد brute force"]
+      ]],
+      ["algorithms","الگوریتم‌ها","algorithms.py",[
+        ["bubble_sort(arr)","مرتب‌سازی حبابی"],["selection_sort(arr)","مرتب‌سازی انتخابی"],["insertion_sort(arr)","مرتب‌سازی درجی"],["merge_sort(arr)","مرتب‌سازی ادغامی"],["quick_sort(arr)","مرتب‌سازی سریع"],["heap_sort(arr)","مرتب‌سازی هیپ"],["counting_sort(arr, max_val=None)","مرتب‌سازی شمارشی"],["radix_sort(arr)","مرتب‌سازی رادیکس"],["shell_sort(arr)","مرتب‌سازی شل"],["bucket_sort(arr, num_buckets=10)","مرتب‌سازی باکت"],["binary_search(arr, target)","جست‌وجوی دودویی"],["binary_search_leftmost(arr, target)","اولین رخداد"],["binary_search_rightmost(arr, target)","آخرین رخداد"],["interpolation_search(arr, target)","جست‌وجوی درون‌یابی"],["exponential_search(arr, target)","جست‌وجوی نمایی"],["ternary_search(f, lo, hi, tol)","جست‌وجوی سه‌تایی"],["levenshtein_distance(s1, s2)","فاصله لونشتاین"],["longest_common_subsequence(s1, s2)","LCS"],["longest_common_substring(s1, s2)","طول زیررشته مشترک"],["knapsack_01(weights, values, capacity)","کوله‌پشتی 0/1"],["coin_change(coins, amount)","کمترین تعداد سکه"],["longest_increasing_subsequence(arr)","LIS"],["max_subarray(arr)","بیشینه زیرآرایه پیوسته"],["max_subarray_indices(arr)","شاخص‌های زیرآرایه بیشینه"],["two_sum(arr, target)","دو عدد با جمع هدف"],["three_sum(arr, target)","سه عدد با جمع هدف"],["flatten(nested)","تخت کردن ساختار تو‌در‌تو"],["rotate_list(arr, k)","چرخاندن فهرست"],["chunk_list(arr, size)","تقسیم به تکه‌ها"],["sliding_window_max(arr, k)","بیشینه پنجره لغزان"],["sliding_window_sum(arr, k)","جمع پنجره لغزان"],["running_average(arr)","میانگین تجمعی"],["cumulative_sum(arr)","جمع تجمعی"],["cumulative_product(arr)","حاصل‌ضرب تجمعی"],["moving_average(arr, window)","میانگین متحرک"],["zip_with(f, a, b)","اعمال تابع روی دو لیست"],["difference_array(arr)","آرایه تفاضل اول"],["second_difference_array(arr)","آرایه تفاضل دوم"]
+      ]]
+    ];
+
+    const content = document.getElementById('content');
+    const tocList = document.getElementById('tocList');
+
+    const moduleNotes = {
+      constants: 'این بخش ثابت‌های پایه را ارائه می‌کند. این مقادیر در تمام کتابخانه استفاده می‌شوند و مبنای محاسبات مثلثاتی، لگاریتمی و عددی هستند.',
+      basics: 'توابع این بخش معادل‌های سبک و خودکفا برای رفتارهای پایه‌ی ریاضی هستند. این توابع برای تمیز کردن داده، بررسی وضعیت عدد و عملیات پایه روی float به کار می‌روند.',
+      numtheory_core: 'در این بخش ابزارهای مینیمال نظریه اعداد قرار دارد؛ چیزهایی مثل فاکتوریل، ب.م.م، ک.م.م و جذر صحیح که در ماژول‌های دیگر هم زیاد مصرف می‌شوند.',
+      power: 'این بخش قلب محاسبات عددی کتابخانه است و توابعی مثل جذر، توان و لگاریتم را با پیاده‌سازی دستی و بدون وابستگی به math فراهم می‌کند.',
+      trigonometry: 'همه‌ی توابع مثلثاتی و هایپربولیک اصلی اینجا جمع شده‌اند. پیاده‌سازی‌ها بر پایه سری و تقریب انجام شده‌اند تا کتابخانه مستقل بماند.',
+      aggregates: 'تابع‌های این بخش برای جمع، ضرب، ترکیب و جایگشت به کار می‌روند و به خصوص در آمار، احتمال و نظریه اعداد استفاده زیادی دارند.',
+      special: 'توابع ویژه‌ای مثل گاما، erf و ابزارهای مربوط به floating-point در اینجا قرار گرفته‌اند. این‌ها برای محاسبات پیشرفته و تحلیل عددی مهم هستند.',
+      numbertheory: 'این ماژول یک جعبه‌ابزار گسترده برای مسائل نظریه اعداد است: اول بودن، تجزیه، پیمانه، توابع دنباله‌ای، اعداد چندضلعی، قضیه‌ی باقیمانده‌ی چینی و بیشتر.',
+      statistics: 'این بخش آمار توصیفی و استنباطی سبک را پوشش می‌دهد. میانگین، میانه، واریانس، همبستگی و رگرسیون خطی از ابزارهای اصلی آن هستند.',
+      probability: 'توزیع‌های پایه و توابع احتمال در اینجا پیاده‌سازی شده‌اند؛ برای کارهای آموزشی و مثال‌های آماری ساده بسیار مناسب‌اند.',
+      linalg: 'بردار، ماتریس و عدد مختلط در این بخش با متدهای پایه و چند ابزار کمکی همراه شده‌اند. این ماژول برای محاسبات هندسی و ماتریسی کاربردی است.',
+      geometry: 'فرمول‌های هندسی پایه، فاصله‌ها، مساحت‌ها، حجم‌ها و روابط کلاسیک مثل قانون سینوس و کسینوس در این بخش قرار دارند.',
+      calculus: 'این بخش ابزارهای عددی برای مشتق، انتگرال و ریشه‌یابی ارائه می‌دهد و برای تقریب‌های سریع و ساده بسیار مناسب است.',
+      conversions: 'تبدیل واحدهای رایج دما، طول، جرم و زاویه در این ماژول قرار دارند.',
+      interpolation: 'درون‌یابی لاگرانژ، نیوتن، کسر مسلسل و چند تبدیل عددی دیگر در این بخش هستند.',
+      randomutil: 'یک مولد ساده‌ی خطی هم‌نهشتی و تولید دنباله‌ی آن در این بخش قرار دارد.',
+      baseconv: 'تبدیل بین مبناهای عددی و همچنین کار با اعداد رومی در این ماژول انجام می‌شود.',
+      series: 'فرمول‌های جمع سری حسابی و هندسی و نسخه‌ی نامتناهی همگرا در این بخش آمده‌اند.',
+      activations: 'این بخش تابع‌های پرکاربرد در مدل‌سازی و یادگیری ماشین مثل ReLU، sigmoid و smoothstep را ارائه می‌دهد.',
+      metrics: 'فاصله‌های اقلیدسی، منهتن، چبیشف، مینکوفسکی و شباهت کسینوسی در این ماژول قرار دارند.',
+      polynomial: 'این یکی از بخش‌های مهم کتابخانه است و برای کار با چندجمله‌ای‌ها، ریشه‌ها، مشتق، انتگرال و خانواده‌های چندجمله‌ای کلاسیک استفاده می‌شود.',
+      datatypes: 'چند نوع‌داده‌ی سفارشی برای کار دقیق‌تر با کسر، اعشار ثابت، بازه و نسبت در این بخش تعریف شده‌اند.',
+      crypto: 'این ماژول ابزارهای رمزنگاری آموزشی، checksum، hash، Luhn و نمونه‌های کلاسیک مثل Caesar و RSA را فراهم می‌کند.',
+      graph: 'ماژول گراف با پیاده‌سازی adjacency list، پیمایش‌ها، shortest path، MST و چند سازنده‌ی آماده همراه است.',
+      algorithms: 'مرتب‌سازی، جست‌وجو، برنامه‌نویسی پویا و الگوریتم‌های رشته‌ای و آرایه‌ای در این ماژول جمع شده‌اند.'
+    };
+
+    const generatedOutputs = {
+  "isnan(x)": [
+    "result = tms.isnan(float(\"nan\"))\nprint(result)",
+    "True"
+  ],
+  "isinf(x)": [
+    "result = tms.isinf(float(\"inf\"))\nprint(result)",
+    "True"
+  ],
+  "isfinite(x)": [
+    "result = tms.isfinite(3.5)\nprint(result)",
+    "True"
+  ],
+  "fabs(x)": [
+    "result = tms.fabs(-7.25)\nprint(result)",
+    "7.25"
+  ],
+  "trunc(x)": [
+    "result = tms.trunc(3.9)\nprint(result)",
+    "3"
+  ],
+  "floor(x)": [
+    "result = tms.floor(3.9)\nprint(result)",
+    "3"
+  ],
+  "ceil(x)": [
+    "result = tms.ceil(3.1)\nprint(result)",
+    "4"
+  ],
+  "modf(x)": [
+    "result = tms.modf(3.75)\nprint(result)",
+    "(0.75, 3.0)"
+  ],
+  "expm1(x)": [
+    "result = tms.expm1(1)\nprint(result)",
+    "1.7182818284590438"
+  ],
+  "log1p(x)": [
+    "result = tms.log1p(1)\nprint(result)",
+    "0.6931471805599454"
+  ],
+  "log2(x)": [
+    "result = tms.log2(8)\nprint(result)",
+    "3.0000000000000004"
+  ],
+  "log10(x)": [
+    "result = tms.log10(1000)\nprint(result)",
+    "2.9999999999999996"
+  ],
+  "sinh(x)": [
+    "result = tms.sinh(1)\nprint(result)",
+    "1.1752011936438007"
+  ],
+  "cosh(x)": [
+    "result = tms.cosh(1)\nprint(result)",
+    "1.543080634815243"
+  ],
+  "tanh(x)": [
+    "result = tms.tanh(1)\nprint(result)",
+    "0.7615941559557647"
+  ],
+  "asinh(x)": [
+    "result = tms.asinh(1)\nprint(result)",
+    "0.8813735870195429"
+  ],
+  "acosh(x)": [
+    "result = tms.acosh(2)\nprint(result)",
+    "1.3169578969248168"
+  ],
+  "atanh(x)": [
+    "result = tms.atanh(0.5)\nprint(result)",
+    "0.5493061443340549"
+  ],
+  "asin(x)": [
+    "result = tms.asin(0.5)\nprint(result)",
+    "0.5235987755982988"
+  ],
+  "acos(x)": [
+    "result = tms.acos(0.5)\nprint(result)",
+    "1.0471975511965979"
+  ],
+  "atan(x)": [
+    "result = tms.atan(1)\nprint(result)",
+    "0.7853981633974483"
+  ],
+  "fsum(iterable)": [
+    "result = tms.fsum([1, 2, 3, 4])\nprint(result)",
+    "10.0"
+  ],
+  "prod(iterable, start=1)": [
+    "result = tms.prod([2, 3, 4], 2)\nprint(result)",
+    "48"
+  ],
+  "isclose(a, b, rel_tol, abs_tol)": [
+    "result = tms.isclose(1.0, 1.0000001, 1e-5, 1e-8)\nprint(result)",
+    "True"
+  ],
+  "lgamma(x)": [
+    "result = tms.lgamma(3)\nprint(result)",
+    "0.6931471805599463"
+  ],
+  "gamma(x)": [
+    "result = tms.gamma(4)\nprint(result)",
+    "6.0"
+  ],
+  "erf(x)": [
+    "result = tms.erf(1)\nprint(result)",
+    "0.84270068974759"
+  ],
+  "erfc(x)": [
+    "result = tms.erfc(1)\nprint(result)",
+    "0.15729931025240995"
+  ],
+  "frexp(x)": [
+    "result = tms.frexp(8)\nprint(result)",
+    "(0.5, 4)"
+  ],
+  "ulp(x)": [
+    "result = tms.ulp(1.0)\nprint(result)",
+    "2.220446049250313e-16"
+  ],
+  "signbit(x)": [
+    "result = tms.signbit(-2)\nprint(result)",
+    "True"
+  ],
+  "next_prime(n)": [
+    "result = tms.next_prime(29)\nprint(result)",
+    "31"
+  ],
+  "prev_prime(n)": [
+    "result = tms.prev_prime(29)\nprint(result)",
+    "23"
+  ],
+  "prime_factors(n)": [
+    "result = tms.prime_factors(84)\nprint(result)",
+    "[2, 2, 3, 7]"
+  ],
+  "prime_factorization(n)": [
+    "result = tms.prime_factorization(84)\nprint(result)",
+    "{2: 2, 3: 1, 7: 1}"
+  ],
+  "divisors(n)": [
+    "result = tms.divisors(12)\nprint(result)",
+    "[1, 2, 3, 4, 6, 12]"
+  ],
+  "divisor_count(n)": [
+    "result = tms.divisor_count(12)\nprint(result)",
+    "6"
+  ],
+  "divisor_sum(n)": [
+    "result = tms.divisor_sum(12)\nprint(result)",
+    "28"
+  ],
+  "is_perfect(n)": [
+    "result = tms.is_perfect(28)\nprint(result)",
+    "True"
+  ],
+  "is_abundant(n)": [
+    "result = tms.is_abundant(12)\nprint(result)",
+    "True"
+  ],
+  "is_deficient(n)": [
+    "result = tms.is_deficient(8)\nprint(result)",
+    "True"
+  ],
+  "euler_totient(n)": [
+    "result = tms.euler_totient(10)\nprint(result)",
+    "4"
+  ],
+  "mobius(n)": [
+    "result = tms.mobius(30)\nprint(result)",
+    "-1"
+  ],
+  "lucas(n)": [
+    "result = tms.lucas(10)\nprint(result)",
+    "123"
+  ],
+  "tribonacci(n)": [
+    "result = tms.tribonacci(10)\nprint(result)",
+    "274"
+  ],
+  "catalan(n)": [
+    "result = tms.catalan(5)\nprint(result)",
+    "42"
+  ],
+  "bernoulli(n)": [
+    "result = tms.bernoulli(4)\nprint(result)",
+    "-0.03333333333333399"
+  ],
+  "harmonic(n)": [
+    "result = tms.harmonic(5)\nprint(result)",
+    "2.283333333333333"
+  ],
+  "digit_sum(n)": [
+    "result = tms.digit_sum(12345)\nprint(result)",
+    "15"
+  ],
+  "digit_product(n)": [
+    "result = tms.digit_product(1234)\nprint(result)",
+    "24"
+  ],
+  "digital_root(n)": [
+    "result = tms.digital_root(9876)\nprint(result)",
+    "3"
+  ],
+  "is_palindrome_number(n)": [
+    "result = tms.is_palindrome_number(12321)\nprint(result)",
+    "True"
+  ],
+  "is_armstrong(n)": [
+    "result = tms.is_armstrong(153)\nprint(result)",
+    "True"
+  ],
+  "collatz_length(n)": [
+    "result = tms.collatz_length(13)\nprint(result)",
+    "9"
+  ],
+  "is_power_of_two(n)": [
+    "result = tms.is_power_of_two(16)\nprint(result)",
+    "True"
+  ],
+  "bit_length(n)": [
+    "result = tms.bit_length(255)\nprint(result)",
+    "8"
+  ],
+  "popcount(n)": [
+    "result = tms.popcount(255)\nprint(result)",
+    "8"
+  ],
+  "sieve_of_eratosthenes(limit)": [
+    "result = tms.sieve_of_eratosthenes(30)\nprint(result)",
+    "[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]"
+  ],
+  "count_primes_below(limit)": [
+    "result = tms.count_primes_below(30)\nprint(result)",
+    "10"
+  ],
+  "goldbach_pair(n)": [
+    "result = tms.goldbach_pair(28)\nprint(result)",
+    "(5, 23)"
+  ],
+  "find_amicable_pairs(limit)": [
+    "result = tms.find_amicable_pairs(1000)\nprint(result)",
+    "[(220, 284)]"
+  ],
+  "triangular_number(n)": [
+    "result = tms.triangular_number(7)\nprint(result)",
+    "28"
+  ],
+  "square_number(n)": [
+    "result = tms.square_number(7)\nprint(result)",
+    "49"
+  ],
+  "pentagonal_number(n)": [
+    "result = tms.pentagonal_number(4)\nprint(result)",
+    "22"
+  ],
+  "hexagonal_number(n)": [
+    "result = tms.hexagonal_number(4)\nprint(result)",
+    "28"
+  ],
+  "heptagonal_number(n)": [
+    "result = tms.heptagonal_number(4)\nprint(result)",
+    "34"
+  ],
+  "octagonal_number(n)": [
+    "result = tms.octagonal_number(4)\nprint(result)",
+    "40"
+  ],
+  "is_triangular(n)": [
+    "result = tms.is_triangular(15)\nprint(result)",
+    "True"
+  ],
+  "is_square(n)": [
+    "result = tms.is_square(16)\nprint(result)",
+    "True"
+  ],
+  "is_pentagonal(n)": [
+    "result = tms.is_pentagonal(12)\nprint(result)",
+    "True"
+  ],
+  "pascal_triangle_row(n)": [
+    "result = tms.pascal_triangle_row(5)\nprint(result)",
+    "[1, 5, 10, 10, 5, 1]"
+  ],
+  "pascal_triangle(rows)": [
+    "result = tms.pascal_triangle(5)\nprint(result)",
+    "[[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]"
+  ],
+  "sum_of_squares(n)": [
+    "result = tms.sum_of_squares(5)\nprint(result)",
+    "55"
+  ],
+  "sum_of_cubes(n)": [
+    "result = tms.sum_of_cubes(5)\nprint(result)",
+    "225"
+  ],
+  "is_perfect_square_fast(n)": [
+    "result = tms.is_perfect_square_fast(144)\nprint(result)",
+    "True"
+  ],
+  "geometric_mean(data)": [
+    "result = tms.geometric_mean([1, 2, 4, 8])\nprint(result)",
+    "2.8284271247461876"
+  ],
+  "harmonic_mean(data)": [
+    "result = tms.harmonic_mean([1, 2, 4])\nprint(result)",
+    "1.7142857142857142"
+  ],
+  "median_low(data)": [
+    "result = tms.median_low([1, 3, 2, 4])\nprint(result)",
+    "2"
+  ],
+  "median_high(data)": [
+    "result = tms.median_high([1, 3, 2, 4])\nprint(result)",
+    "3"
+  ],
+  "multimode(data)": [
+    "result = tms.multimode([1, 1, 2, 2, 3])\nprint(result)",
+    "[1, 2]"
+  ],
+  "pvariance(data, mu=None)": [
+    "result = tms.pvariance([1, 2, 3, 4])\nprint(result)",
+    "1.25"
+  ],
+  "pstdev(data, mu=None)": [
+    "result = tms.pstdev([1, 2, 3, 4])\nprint(result)",
+    "1.118033988749895"
+  ],
+  "quantiles(data, n=4)": [
+    "result = tms.quantiles([1, 2, 3, 4, 5, 6, 7, 8])\nprint(result)",
+    "[2.75, 4.5, 6.25]"
+  ],
+  "range_(data)": [
+    "result = tms.range_([1, 9, 4, 2])\nprint(result)",
+    "8"
+  ],
+  "midrange(data)": [
+    "result = tms.midrange([1, 9, 4, 2])\nprint(result)",
+    "5.0"
+  ],
+  "skewness(data)": [
+    "result = tms.skewness([1, 2, 3, 4, 5])\nprint(result)",
+    "0.0"
+  ],
+  "kurtosis(data)": [
+    "result = tms.kurtosis([1, 2, 3, 4, 5])\nprint(result)",
+    "-1.2999999999999996"
+  ],
+  "normal_pdf(x, mu=0.0, sigma=1.0)": [
+    "result = tms.normal_pdf(0)\nprint(result)",
+    "0.39894228040143265"
+  ],
+  "normal_cdf(x, mu=0.0, sigma=1.0)": [
+    "result = tms.normal_cdf(0)\nprint(result)",
+    "0.5000000005"
+  ],
+  "rotation_matrix_2d(theta)": [
+    "result = tms.rotation_matrix_2d(tms.PI / 2)\nprint(result)",
+    "Matrix([[4.5907218229751464e-17, -1.0000000000000002], [1.0000000000000002, 4.5907218229751464e-17]])"
+  ],
+  "rotation_matrix_x(theta)": [
+    "result = tms.rotation_matrix_x(tms.PI / 2)\nprint(result)",
+    "Matrix([[1, 0, 0], [0, 4.5907218229751464e-17, -1.0000000000000002], [0, 1.0000000000000002, 4.5907218229751464e-17]])"
+  ],
+  "rotation_matrix_y(theta)": [
+    "result = tms.rotation_matrix_y(tms.PI / 2)\nprint(result)",
+    "Matrix([[4.5907218229751464e-17, 0, 1.0000000000000002], [0, 1, 0], [-1.0000000000000002, 0, 4.5907218229751464e-17]])"
+  ],
+  "rotation_matrix_z(theta)": [
+    "result = tms.rotation_matrix_z(tms.PI / 2)\nprint(result)",
+    "Matrix([[4.5907218229751464e-17, -1.0000000000000002, 0], [1.0000000000000002, 4.5907218229751464e-17, 0], [0, 0, 1]])"
+  ],
+  "circle_area(r)": [
+    "result = tms.circle_area(3)\nprint(result)",
+    "28.274333882308138"
+  ],
+  "circle_circumference(r)": [
+    "result = tms.circle_circumference(3)\nprint(result)",
+    "18.84955592153876"
+  ],
+  "sphere_volume(r)": [
+    "result = tms.sphere_volume(3)\nprint(result)",
+    "113.09733552923254"
+  ],
+  "sphere_surface_area(r)": [
+    "result = tms.sphere_surface_area(3)\nprint(result)",
+    "113.09733552923255"
+  ],
+  "polygon_area_shoelace(points)": [
+    "result = tms.polygon_area_shoelace([(0, 0), (4, 0), (4, 3)])\nprint(result)",
+    "6.0"
+  ],
+  "centroid(points)": [
+    "result = tms.centroid([(0, 0), (4, 0), (4, 3)])\nprint(result)",
+    "(2.6666666666666665, 1.0)"
+  ],
+  "taylor_series_exp(x, terms=20)": [
+    "result = tms.taylor_series_exp(1)\nprint(result)",
+    "2.7182818284590455"
+  ],
+  "convert_celsius_to_fahrenheit(c)": [
+    "result = tms.convert_celsius_to_fahrenheit(0)\nprint(result)",
+    "32.0"
+  ],
+  "convert_fahrenheit_to_celsius(f)": [
+    "result = tms.convert_fahrenheit_to_celsius(32)\nprint(result)",
+    "0.0"
+  ],
+  "convert_celsius_to_kelvin(c)": [
+    "result = tms.convert_celsius_to_kelvin(0)\nprint(result)",
+    "273.15"
+  ],
+  "convert_kelvin_to_celsius(k)": [
+    "result = tms.convert_kelvin_to_celsius(273.15)\nprint(result)",
+    "0.0"
+  ],
+  "convert_km_to_miles(km)": [
+    "result = tms.convert_km_to_miles(1)\nprint(result)",
+    "0.621371"
+  ],
+  "convert_miles_to_km(miles)": [
+    "result = tms.convert_miles_to_km(1)\nprint(result)",
+    "1.6093444978925633"
+  ],
+  "convert_kg_to_pounds(kg)": [
+    "result = tms.convert_kg_to_pounds(1)\nprint(result)",
+    "2.20462"
+  ],
+  "convert_pounds_to_kg(lb)": [
+    "result = tms.convert_pounds_to_kg(1)\nprint(result)",
+    "0.45359290943563974"
+  ],
+  "continued_fraction(x, depth=15)": [
+    "result = tms.continued_fraction(3.245)\nprint(result)",
+    "[3, 4, 12, 3, 1, 247777268231, 4, 1, 2, 1, 2, 1, 34, 1, 3]"
+  ],
+  "convergent_from_continued_fraction(terms)": [
+    "result = tms.convergent_from_continued_fraction([1, 2, 2])\nprint(result)",
+    "(7, 5)"
+  ],
+  "lcg_random(seed, a=1103515245, c=12345, m=2 ** 31)": [
+    "result = tms.lcg_random(2, 2, 2, 2)\nprint(result)",
+    "0"
+  ],
+  "lcg_sequence(seed, n, a=1103515245, c=12345, m=2 ** 31)": [
+    "result = tms.lcg_sequence(2, 2, 2, 2, 2)\nprint(result)",
+    "[0, 0]"
+  ],
+  "to_base(n, base)": [
+    "result = tms.to_base(2, 2)\nprint(result)",
+    "'10'"
+  ],
+  "int_to_roman(n)": [
+    "result = tms.int_to_roman(2)\nprint(result)",
+    "'II'"
+  ],
+  "arithmetic_series_sum(a1, d, n)": [
+    "result = tms.arithmetic_series_sum(2, 2, 2)\nprint(result)",
+    "6.0"
+  ],
+  "geometric_series_sum(a1, r, n)": [
+    "result = tms.geometric_series_sum(2, 2, 2)\nprint(result)",
+    "6.0"
+  ],
+  "lerp(a, b, t)": [
+    "result = tms.lerp(2, 2, 2)\nprint(result)",
+    "2"
+  ],
+  "clamp(x, lo, hi)": [
+    "result = tms.clamp(2, 2, 2)\nprint(result)",
+    "2"
+  ],
+  "sign(x)": [
+    "result = tms.sign(2)\nprint(result)",
+    "1"
+  ],
+  "relu(x)": [
+    "result = tms.relu(2)\nprint(result)",
+    "2"
+  ],
+  "sigmoid(x)": [
+    "result = tms.sigmoid(2)\nprint(result)",
+    "0.8807970779778825"
+  ],
+  "softplus(x)": [
+    "result = tms.softplus(2)\nprint(result)",
+    "2.1269280110429714"
+  ],
+  "tanh_derivative(x)": [
+    "result = tms.tanh_derivative(2)\nprint(result)",
+    "0.07065082485316443"
+  ],
+  "sigmoid_derivative(x)": [
+    "result = tms.sigmoid_derivative(2)\nprint(result)",
+    "0.10499358540350645"
+  ],
+  "poly_roots_cubic(a, b, c, d)": [
+    "result = tms.poly_roots_cubic(2, 2, 2, 2)\nprint(result)",
+    "(-0.9999999999999998, (-5.551115123125783e-17, 1.0), (-5.551115123125783e-17, -1.0))"
+  ],
+  "poly_chebyshev_t(n)": [
+    "result = tms.poly_chebyshev_t(2)\nprint(result)",
+    "[2.0, 0.0, -1.0]"
+  ],
+  "poly_legendre(n)": [
+    "result = tms.poly_legendre(2)\nprint(result)",
+    "[1.5, 0.0, -0.5]"
+  ],
+  "poly_hermite(n)": [
+    "result = tms.poly_hermite(2)\nprint(result)",
+    "[4.0, 0.0, -2.0]"
+  ],
+  "poly_laguerre(n)": [
+    "result = tms.poly_laguerre(2)\nprint(result)",
+    "[1.5, 0.0, 0.0]"
+  ],
+  "is_prime_miller_rabin(n, witnesses=None)": [
+    "result = tms.is_prime_miller_rabin(2, 2)\nprint(result)",
+    "True"
+  ],
+  "diffie_hellman_shared_secret(public_other, private_self, p)": [
+    "result = tms.diffie_hellman_shared_secret(2, 2, 2)\nprint(result)",
+    "0"
+  ],
+  "checksum_sum(data)": [
+    "result = tms.checksum_sum([1, 2, 3, 4])\nprint(result)",
+    "10"
+  ],
+  "checksum_xor(data)": [
+    "result = tms.checksum_xor([1, 2, 3, 4])\nprint(result)",
+    "4"
+  ],
+  "luhn_check(number)": [
+    "result = tms.luhn_check(2)\nprint(result)",
+    "False"
+  ],
+  "luhn_generate(partial)": [
+    "result = tms.luhn_generate(2)\nprint(result)",
+    "26"
+  ],
+  "graph_complete(n)": [
+    "result = tms.graph_complete(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C4A32C550>"
+  ],
+  "graph_cycle(n)": [
+    "result = tms.graph_cycle(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C4A32C2D0>"
+  ],
+  "graph_path(n)": [
+    "result = tms.graph_path(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C49EAAFD0>"
+  ],
+  "graph_star(n)": [
+    "result = tms.graph_star(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C49EAB6F0>"
+  ],
+  "selection_sort(arr)": [
+    "result = tms.selection_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "insertion_sort(arr)": [
+    "result = tms.insertion_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "merge_sort(arr)": [
+    "result = tms.merge_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "quick_sort(arr)": [
+    "result = tms.quick_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "heap_sort(arr)": [
+    "result = tms.heap_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "counting_sort(arr, max_val=None)": [
+    "result = tms.counting_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "radix_sort(arr)": [
+    "result = tms.radix_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "shell_sort(arr)": [
+    "result = tms.shell_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "bucket_sort(arr, num_buckets=10)": [
+    "result = tms.bucket_sort([0.42, 0.32, 0.23])\nprint(result)",
+    "[0.23, 0.32, 0.42]"
+  ],
+  "longest_increasing_subsequence(arr)": [
+    "result = tms.longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18])\nprint(result)",
+    "4"
+  ],
+  "max_subarray(arr)": [
+    "result = tms.max_subarray([1, 2, 3, 4])\nprint(result)",
+    "10"
+  ],
+  "max_subarray_indices(arr)": [
+    "result = tms.max_subarray_indices([1, 2, 3, 4])\nprint(result)",
+    "(0, 3, 10)"
+  ],
+  "two_sum(arr, target)": [
+    "result = tms.two_sum([1, 2, 3, 4], 2)\nprint(result)",
+    "None"
+  ],
+  "three_sum(arr, target)": [
+    "result = tms.three_sum([1, 2, 3, 4], 2)\nprint(result)",
+    "[]"
+  ],
+  "flatten(nested)": [
+    "result = tms.flatten(2)\nprint(result)",
+    "[2]"
+  ],
+  "rotate_list(arr, k)": [
+    "result = tms.rotate_list([1, 2, 3, 4], 2)\nprint(result)",
+    "[3, 4, 1, 2]"
+  ],
+  "chunk_list(arr, size)": [
+    "result = tms.chunk_list([1, 2, 3, 4], 2)\nprint(result)",
+    "[[1, 2], [3, 4]]"
+  ],
+  "sliding_window_max(arr, k)": [
+    "result = tms.sliding_window_max([1, 2, 3, 4], 2)\nprint(result)",
+    "[2, 3, 4]"
+  ],
+  "sliding_window_sum(arr, k)": [
+    "result = tms.sliding_window_sum([1, 2, 3, 4], 2)\nprint(result)",
+    "[3, 5, 7]"
+  ],
+  "running_average(arr)": [
+    "result = tms.running_average([1, 2, 3, 4])\nprint(result)",
+    "[1.0, 1.5, 2.0, 2.5]"
+  ],
+  "cumulative_sum(arr)": [
+    "result = tms.cumulative_sum([1, 2, 3, 4])\nprint(result)",
+    "[1, 3, 6, 10]"
+  ],
+  "cumulative_product(arr)": [
+    "result = tms.cumulative_product([1, 2, 3, 4])\nprint(result)",
+    "[1, 2, 6, 24]"
+  ],
+  "moving_average(arr, window)": [
+    "result = tms.moving_average([1, 2, 3, 4], 2)\nprint(result)",
+    "[1.5, 2.5, 3.5]"
+  ],
+  "difference_array(arr)": [
+    "result = tms.difference_array([1, 2, 3, 4])\nprint(result)",
+    "[1, 1, 1]"
+  ],
+  "second_difference_array(arr)": [
+    "result = tms.second_difference_array([1, 2, 3, 4])\nprint(result)",
+    "[0, 0]"
+  ]
+};
+
+    function exampleFor(name, module) {
+      const n = name.split('(')[0];
+      const map = {
+        PI: ['print(tms.PI)', '3.141592653589793'],
+        TAU: ['print(tms.TAU)', '6.283185307179586'],
+        E: ['print(tms.E)', '2.718281828459045'],
+        INF: ['print(tms.INF)', 'inf'],
+        NAN: ['print(tms.NAN)', 'nan'],
+        SQRT2: ['print(tms.SQRT2)', '1.4142135623730951'],
+        LN2: ['print(tms.LN2)', '0.6931471805599453'],
+        LN10: ['print(tms.LN10)', '2.302585092994046'],
+        factorial: ['print(tms.factorial(5))', '120'],
+        gcd: ['print(tms.gcd(12, 18))', '6'],
+        lcm: ['print(tms.lcm(4, 6))', '12'],
+        isqrt: ['print(tms.isqrt(17))', '4'],
+        sqrt: ['print(round(tms.sqrt(9), 1))', '3.0'],
+        cbrt: ['print(round(tms.cbrt(27), 1))', '3.0'],
+        pow_: ['print(tms.pow_(2, 5))', '32.0'],
+        exp: ['print(round(tms.exp(1), 6))', '2.718282'],
+        log: ['print(round(tms.log(tms.E), 6))', '1.0'],
+        sin: ['print(round(tms.sin(tms.PI / 2), 6))', '1.0'],
+        cos: ['print(round(tms.cos(0), 6))', '1.0'],
+        tan: ['print(round(tms.tan(tms.PI / 4), 6))', '1.0'],
+        degrees: ['print(tms.degrees(tms.PI))', '180.0'],
+        radians: ['print(round(tms.radians(180), 6))', '3.141593'],
+        is_prime: ['print(tms.is_prime(97))', 'True'],
+        fibonacci: ['print(tms.fibonacci(10))', '55'],
+        mean: ['print(tms.mean([1, 2, 3, 4]))', '2.5'],
+        median: ['print(tms.median([1, 3, 2]))', '2.0'],
+        mode: ['print(tms.mode([1, 2, 2, 3]))', '2'],
+        variance: ['print(round(tms.variance([1, 2, 3, 4]), 6))', '1.666667'],
+        stdev: ['print(round(tms.stdev([1, 2, 3, 4]), 6))', '1.290994'],
+        comb: ['print(tms.comb(5, 2))', '10'],
+        perm: ['print(tms.perm(5, 2))', '20'],
+        Matrix: ['m = tms.Matrix([[1, 2], [3, 4]])\nprint(m.determinant())', '-2'],
+        Vector: ['v = tms.Vector([3, 4])\nprint(v.norm())', '5.0'],
+        Complex: ['z = tms.Complex(3, 4)\nprint(z.modulus())', '5.0'],
+        Fraction: ['f = tms.Fraction(6, 8)\nprint(f)', '3/4'],
+        FixedDecimal: ['d = tms.FixedDecimal(3.14, 2)\nprint(float(d))', '3.14'],
+        Interval: ['iv = tms.Interval(1, 5)\nprint(3 in iv)', 'True'],
+        Ratio: ['r = tms.Ratio(4, 6)\nprint(r.as_float())', '0.6666666666666666'],
+        Graph: ['g = tms.Graph()\ng.add_edge("A", "B")\nprint(g.bfs("A"))', "['A', 'B']"],
+        caesar_encrypt: ['print(tms.caesar_encrypt("ABC", 3))', 'DEF'],
+        caesar_decrypt: ['print(tms.caesar_decrypt("DEF", 3))', 'ABC'],
+        rot13: ['print(tms.rot13("Hello"))', 'Uryyb'],
+        rsa_generate_keys: ['pub, priv = tms.rsa_generate_keys(61, 53)\nprint(pub[1])', '3233'],
+        rsa_encrypt: ['pub, priv = tms.rsa_generate_keys(61, 53)\nprint(tms.rsa_encrypt(42, pub))', '2557'],
+        rsa_decrypt: ['pub, priv = tms.rsa_generate_keys(61, 53)\nct = tms.rsa_encrypt(42, pub)\nprint(tms.rsa_decrypt(ct, priv))', '42'],
+        bubble_sort: ['print(tms.bubble_sort([5, 3, 1]))', '[1, 3, 5]'],
+        binary_search: ['print(tms.binary_search([1, 3, 5, 7], 5))', '2'],
+        levenshtein_distance: ['print(tms.levenshtein_distance("kitten", "sitting"))', '3'],
+        longest_common_subsequence: ['print(tms.longest_common_subsequence("ABCBDAB", "BDCAB"))', '4'],
+        knapsack_01: ['print(tms.knapsack_01([1, 3, 4], [1, 4, 5], 4))', '5'],
+        coin_change: ['print(tms.coin_change([1, 5, 10], 12))', '3'],
+        poly_eval: ['print(tms.poly_eval([1, 0, -1], 3))', '8.0'],
+        poly_add: ['print(tms.poly_add([1, 2], [3, 4]))', '[4, 6]'],
+        poly_mul: ['print(tms.poly_mul([1, 1], [1, -1]))', '[1, 0, -1]'],
+        poly_roots_quadratic: ['print(tms.poly_roots_quadratic(1, -5, 6))', '(3.0, 2.0)']
+      };
+
+      if (map[n]) return map[n];
+      if (generatedOutputs[name]) return generatedOutputs[name];
+
+      const argCount = (name.match(/,/g) || []).length + (name.includes('(') ? 1 : 0);
+      const args = argCount > 0 ? Array.from({ length: Math.min(argCount, 3) }, (_, i) => i + 1).join(', ') : '';
+      const call = args ? `tms.${n}(${args})` : `tms.${n}()`;
+      return [`result = ${call}\nprint(result)`, `computed from sample inputs for ${n}`];
+    }
+
+    function inputSummary(signature) {
+      const inside = signature.includes('(') ? signature.slice(signature.indexOf('(') + 1, signature.lastIndexOf(')')) : '';
+      if (!inside.trim()) return 'ورودی: ندارد';
+      return 'ورودی‌ها: ' + inside.replace(/\s*=\s*/g, ' = ');
+    }
+
+    function rowHTML(item, moduleId) {
+      const [name, desc] = item;
+      const [example, output] = exampleFor(name, moduleId);
+      return `<tr><td><code>${name}</code></td><td>${desc}<div class="param">${inputSummary(name)}</div></td><td><div class="sample"><span class="sample-label">Example</span><pre><code>${example}</code></pre><div class="output"><strong>Output</strong><code>${output}</code></div></div></td></tr>`;
+    }
+
+    docs.forEach(([id, title, file, items], idx) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="#${id}">${title}</a>`;
+      tocList.appendChild(li);
+
+      const section = document.createElement('section');
+      section.id = id;
+      section.innerHTML = `
+        <h2>${title}</h2>
+        <div class="module">
+          <div class="module-head">${file}</div>
+          <div class="module-intro"><p>${moduleNotes[id] || ''}</p></div>
+          <table>
+            <thead><tr><th>نام</th><th>توضیح</th><th>مثال و خروجی</th></tr></thead>
+            <tbody>${items.map(item => rowHTML(item, id)).join('')}</tbody>
+          </table>
+        </div>
+      `;
+      content.appendChild(section);
+      section.style.setProperty('--reveal-delay', `${90 + idx * 45}ms`);
+    });
+
+    const extra = document.createElement('section');
+    extra.id = 'usage';
+    extra.style.setProperty('--reveal-delay', `${90 + docs.length * 45}ms`);
+    extra.innerHTML = `
+      <h2>نحوه استفاده و جمع‌بندی</h2>
+      <p>به‌دلیل re-export شدن همه چیز در <code>__init__.py</code>، ساده‌ترین راه استفاده این است. این روش برای شروع سریع، خوانایی بالا و دسترسی به تمام API بدون importهای طولانی بسیار مناسب است.</p>
+      <pre><code>import taha_math_shiraz as tms
+
+print(tms.PI)
+print(tms.sin(tms.PI / 2))
+print(tms.mean([1, 2, 3, 4]))</code></pre>
+      <p>اگر بخواهی فقط یک بخش را import کنی، import مستقیم از ماژول‌ها هم ممکن است. این کار وقتی مفید است که فقط یک زیرسیستم مثل گراف، آمار یا رمزنگاری لازم داشته باشی و بخواهی namespace تمیزتری نگه داری.</p>
+    `;
+    content.appendChild(extra);
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="#usage">نحوه استفاده و جمع‌بندی</a>`;
+    tocList.appendChild(li);
+
+    const filter = document.getElementById('filter');
+    const blocks = Array.from(document.querySelectorAll('section, .note, .warn'));
+    const normalize = (value) => value
+      .toString()
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[_\-().,;:\/\\[\]{}<>!?'"`~@#$%^&*=+|]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    const compact = (value) => normalize(value).replace(/\s+/g, '');
+    const levenshtein = (a, b) => {
+      if (a === b) return 0;
+      if (!a) return b.length;
+      if (!b) return a.length;
+      let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+      for (let i = 1; i <= a.length; i++) {
+        const curr = [i];
+        for (let j = 1; j <= b.length; j++) {
+          curr[j] = Math.min(
+            prev[j] + 1,
+            curr[j - 1] + 1,
+            prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
+          );
+        }
+        prev = curr;
+      }
+      return prev[b.length];
+    };
+    const similarity = (query, text) => {
+      if (!query || !text) return 0;
+      const q = compact(query);
+      const t = compact(text);
+      if (!q || !t) return 0;
+      if (t.includes(q) || q.includes(t)) return 1;
+      if (t.startsWith(q) || q.startsWith(t)) return 0.95;
+      if (q.length <= 2) return t.split(' ').some(part => part.startsWith(q)) ? 0.85 : 0;
+      const words = normalize(text).split(' ').filter(Boolean);
+      const bestWord = words.reduce((best, word) => {
+        const qw = compact(word);
+        const score = qw ? 1 - (levenshtein(q, qw) / Math.max(q.length, qw.length)) : 0;
+        return Math.max(best, score);
+      }, 0);
+      const whole = 1 - (levenshtein(q, t) / Math.max(q.length, t.length));
+      return Math.max(bestWord, whole);
+    };
+    const matches = (query, text) => {
+      const q = normalize(query);
+      if (!q) return true;
+      const searchable = normalize(text);
+      if (searchable.includes(q)) return true;
+      return q.split(' ').filter(Boolean).some(part => similarity(part, searchable) >= 0.62);
+    };
+    filter.addEventListener('input', function () {
+      const term = this.value.trim().toLowerCase();
+      blocks.forEach(el => {
+        el.classList.toggle('hidden', term && !matches(term, el.textContent));
+      });
+    });
+
+    const links = Array.from(document.querySelectorAll('.toc a'));
+    links.forEach(link => link.addEventListener('click', () => {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    }));
+
+    const targets = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-35% 0px -60% 0px', threshold: 0.01 });
+    targets.forEach(t => obs.observe(t));
+  </script>
+</body>
+</html>
+

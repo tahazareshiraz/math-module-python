@@ -1,29 +1,12 @@
-__version__ = "1.1.0"
+from importlib import import_module
 
-from .constants import *
-from .basics import *
-from .numtheory_core import *
-from .power import *
-from .trigonometry import *
-from .aggregates import *
-from .special import *
-from .numbertheory import *
-from .statistics_mod import *
-from .probability import *
-from .linalg import *
-from .combinatorics import *
-from .geometry import *
-from .calculus import *
-from .conversions import *
-from .interpolation import *
-from .randomutil import *
-from .baseconv import *
-from .series import *
-from .activations import *
-from .metrics import *
-from .polynomial import *
-from .datatypes import *
-from .crypto import *
-from .graph import *
-from .algorithms import *
+_module = import_module("src.taha_math_shiraz")
+
+__version__ = getattr(_module, "__version__", None)
+__all__ = getattr(
+    _module, "__all__", [name for name in dir(_module) if not name.startswith("_")]
+)
+
+for name in __all__:
+    globals()[name] = getattr(_module, name)
 

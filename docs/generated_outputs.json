@@ -1,0 +1,1290 @@
+{
+  "isnan(x)": [
+    "result = tms.isnan(float(\"nan\"))\nprint(result)",
+    "True"
+  ],
+  "isinf(x)": [
+    "result = tms.isinf(float(\"inf\"))\nprint(result)",
+    "True"
+  ],
+  "isfinite(x)": [
+    "result = tms.isfinite(3.5)\nprint(result)",
+    "True"
+  ],
+  "copysign(x, y)": [
+    "result = tms.copysign((-3.0, 2.0))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "fabs(x)": [
+    "result = tms.fabs(-7.25)\nprint(result)",
+    "7.25"
+  ],
+  "trunc(x)": [
+    "result = tms.trunc(3.9)\nprint(result)",
+    "3"
+  ],
+  "floor(x)": [
+    "result = tms.floor(3.9)\nprint(result)",
+    "3"
+  ],
+  "ceil(x)": [
+    "result = tms.ceil(3.1)\nprint(result)",
+    "4"
+  ],
+  "fmod(x, y)": [
+    "result = tms.fmod((7.5, 2.0))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "remainder(x, y)": [
+    "result = tms.remainder((7.5, 2.0))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "modf(x)": [
+    "result = tms.modf(3.75)\nprint(result)",
+    "(0.75, 3.0)"
+  ],
+  "expm1(x)": [
+    "result = tms.expm1(1)\nprint(result)",
+    "1.7182818284590438"
+  ],
+  "log1p(x)": [
+    "result = tms.log1p(1)\nprint(result)",
+    "0.6931471805599454"
+  ],
+  "log2(x)": [
+    "result = tms.log2(8)\nprint(result)",
+    "3.0000000000000004"
+  ],
+  "log10(x)": [
+    "result = tms.log10(1000)\nprint(result)",
+    "2.9999999999999996"
+  ],
+  "sinh(x)": [
+    "result = tms.sinh(1)\nprint(result)",
+    "1.1752011936438007"
+  ],
+  "cosh(x)": [
+    "result = tms.cosh(1)\nprint(result)",
+    "1.543080634815243"
+  ],
+  "tanh(x)": [
+    "result = tms.tanh(1)\nprint(result)",
+    "0.7615941559557647"
+  ],
+  "asinh(x)": [
+    "result = tms.asinh(1)\nprint(result)",
+    "0.8813735870195429"
+  ],
+  "acosh(x)": [
+    "result = tms.acosh(2)\nprint(result)",
+    "1.3169578969248168"
+  ],
+  "atanh(x)": [
+    "result = tms.atanh(0.5)\nprint(result)",
+    "0.5493061443340549"
+  ],
+  "asin(x)": [
+    "result = tms.asin(0.5)\nprint(result)",
+    "0.5235987755982988"
+  ],
+  "acos(x)": [
+    "result = tms.acos(0.5)\nprint(result)",
+    "1.0471975511965979"
+  ],
+  "atan(x)": [
+    "result = tms.atan(1)\nprint(result)",
+    "0.7853981633974483"
+  ],
+  "atan2(y, x)": [
+    "result = tms.atan2((1, 1))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "hypot(*coords)": [
+    "result = tms.hypot((3, 4))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "dist(p, q)": [
+    "result = tms.dist(((0, 0), (3, 4)))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "fsum(iterable)": [
+    "result = tms.fsum([1, 2, 3, 4])\nprint(result)",
+    "10.0"
+  ],
+  "prod(iterable, start=1)": [
+    "result = tms.prod([2, 3, 4], 2)\nprint(result)",
+    "48"
+  ],
+  "isclose(a, b, rel_tol, abs_tol)": [
+    "result = tms.isclose(1.0, 1.0000001, 1e-5, 1e-8)\nprint(result)",
+    "True"
+  ],
+  "lgamma(x)": [
+    "result = tms.lgamma(3)\nprint(result)",
+    "0.6931471805599463"
+  ],
+  "gamma(x)": [
+    "result = tms.gamma(4)\nprint(result)",
+    "6.0"
+  ],
+  "erf(x)": [
+    "result = tms.erf(1)\nprint(result)",
+    "0.84270068974759"
+  ],
+  "erfc(x)": [
+    "result = tms.erfc(1)\nprint(result)",
+    "0.15729931025240995"
+  ],
+  "frexp(x)": [
+    "result = tms.frexp(8)\nprint(result)",
+    "(0.5, 4)"
+  ],
+  "ldexp(m, e)": [
+    "result = tms.ldexp((0.5, 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "nextafter(x, y)": [
+    "result = tms.nextafter((1.0, 2.0))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "ulp(x)": [
+    "result = tms.ulp(1.0)\nprint(result)",
+    "2.220446049250313e-16"
+  ],
+  "signbit(x)": [
+    "result = tms.signbit(-2)\nprint(result)",
+    "True"
+  ],
+  "next_prime(n)": [
+    "result = tms.next_prime(29)\nprint(result)",
+    "31"
+  ],
+  "prev_prime(n)": [
+    "result = tms.prev_prime(29)\nprint(result)",
+    "23"
+  ],
+  "prime_factors(n)": [
+    "result = tms.prime_factors(84)\nprint(result)",
+    "[2, 2, 3, 7]"
+  ],
+  "prime_factorization(n)": [
+    "result = tms.prime_factorization(84)\nprint(result)",
+    "{2: 2, 3: 1, 7: 1}"
+  ],
+  "divisors(n)": [
+    "result = tms.divisors(12)\nprint(result)",
+    "[1, 2, 3, 4, 6, 12]"
+  ],
+  "divisor_count(n)": [
+    "result = tms.divisor_count(12)\nprint(result)",
+    "6"
+  ],
+  "divisor_sum(n)": [
+    "result = tms.divisor_sum(12)\nprint(result)",
+    "28"
+  ],
+  "is_perfect(n)": [
+    "result = tms.is_perfect(28)\nprint(result)",
+    "True"
+  ],
+  "is_abundant(n)": [
+    "result = tms.is_abundant(12)\nprint(result)",
+    "True"
+  ],
+  "is_deficient(n)": [
+    "result = tms.is_deficient(8)\nprint(result)",
+    "True"
+  ],
+  "euler_totient(n)": [
+    "result = tms.euler_totient(10)\nprint(result)",
+    "4"
+  ],
+  "mobius(n)": [
+    "result = tms.mobius(30)\nprint(result)",
+    "-1"
+  ],
+  "lucas(n)": [
+    "result = tms.lucas(10)\nprint(result)",
+    "123"
+  ],
+  "tribonacci(n)": [
+    "result = tms.tribonacci(10)\nprint(result)",
+    "274"
+  ],
+  "catalan(n)": [
+    "result = tms.catalan(5)\nprint(result)",
+    "42"
+  ],
+  "bernoulli(n)": [
+    "result = tms.bernoulli(4)\nprint(result)",
+    "-0.03333333333333399"
+  ],
+  "harmonic(n)": [
+    "result = tms.harmonic(5)\nprint(result)",
+    "2.283333333333333"
+  ],
+  "digit_sum(n)": [
+    "result = tms.digit_sum(12345)\nprint(result)",
+    "15"
+  ],
+  "digit_product(n)": [
+    "result = tms.digit_product(1234)\nprint(result)",
+    "24"
+  ],
+  "digital_root(n)": [
+    "result = tms.digital_root(9876)\nprint(result)",
+    "3"
+  ],
+  "is_palindrome_number(n)": [
+    "result = tms.is_palindrome_number(12321)\nprint(result)",
+    "True"
+  ],
+  "is_armstrong(n)": [
+    "result = tms.is_armstrong(153)\nprint(result)",
+    "True"
+  ],
+  "collatz_length(n)": [
+    "result = tms.collatz_length(13)\nprint(result)",
+    "9"
+  ],
+  "is_power_of_two(n)": [
+    "result = tms.is_power_of_two(16)\nprint(result)",
+    "True"
+  ],
+  "bit_length(n)": [
+    "result = tms.bit_length(255)\nprint(result)",
+    "8"
+  ],
+  "popcount(n)": [
+    "result = tms.popcount(255)\nprint(result)",
+    "8"
+  ],
+  "extended_gcd(a, b)": [
+    "result = tms.extended_gcd((30, 12))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "mod_inverse(a, m)": [
+    "result = tms.mod_inverse((3, 11))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "mod_pow(base, exp, mod)": [
+    "result = tms.mod_pow((2, 10, 1000))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "chinese_remainder(remainders, moduli)": [
+    "result = tms.chinese_remainder(([2, 3], [3, 5]))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "is_coprime(a, b)": [
+    "result = tms.is_coprime((14, 15))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "jacobi_symbol(a, n)": [
+    "result = tms.jacobi_symbol((5, 7))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "sieve_of_eratosthenes(limit)": [
+    "result = tms.sieve_of_eratosthenes(30)\nprint(result)",
+    "[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]"
+  ],
+  "count_primes_below(limit)": [
+    "result = tms.count_primes_below(30)\nprint(result)",
+    "10"
+  ],
+  "goldbach_pair(n)": [
+    "result = tms.goldbach_pair(28)\nprint(result)",
+    "(5, 23)"
+  ],
+  "is_amicable_pair(a, b)": [
+    "result = tms.is_amicable_pair((220, 284))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "find_amicable_pairs(limit)": [
+    "result = tms.find_amicable_pairs(1000)\nprint(result)",
+    "[(220, 284)]"
+  ],
+  "polygonal_number(s, n)": [
+    "result = tms.polygonal_number((5, 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "triangular_number(n)": [
+    "result = tms.triangular_number(7)\nprint(result)",
+    "28"
+  ],
+  "square_number(n)": [
+    "result = tms.square_number(7)\nprint(result)",
+    "49"
+  ],
+  "pentagonal_number(n)": [
+    "result = tms.pentagonal_number(4)\nprint(result)",
+    "22"
+  ],
+  "hexagonal_number(n)": [
+    "result = tms.hexagonal_number(4)\nprint(result)",
+    "28"
+  ],
+  "heptagonal_number(n)": [
+    "result = tms.heptagonal_number(4)\nprint(result)",
+    "34"
+  ],
+  "octagonal_number(n)": [
+    "result = tms.octagonal_number(4)\nprint(result)",
+    "40"
+  ],
+  "is_triangular(n)": [
+    "result = tms.is_triangular(15)\nprint(result)",
+    "True"
+  ],
+  "is_square(n)": [
+    "result = tms.is_square(16)\nprint(result)",
+    "True"
+  ],
+  "is_pentagonal(n)": [
+    "result = tms.is_pentagonal(12)\nprint(result)",
+    "True"
+  ],
+  "pascal_triangle_row(n)": [
+    "result = tms.pascal_triangle_row(5)\nprint(result)",
+    "[1, 5, 10, 10, 5, 1]"
+  ],
+  "pascal_triangle(rows)": [
+    "result = tms.pascal_triangle(5)\nprint(result)",
+    "[[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]"
+  ],
+  "sum_of_squares(n)": [
+    "result = tms.sum_of_squares(5)\nprint(result)",
+    "55"
+  ],
+  "sum_of_cubes(n)": [
+    "result = tms.sum_of_cubes(5)\nprint(result)",
+    "225"
+  ],
+  "is_perfect_square_fast(n)": [
+    "result = tms.is_perfect_square_fast(144)\nprint(result)",
+    "True"
+  ],
+  "geometric_mean(data)": [
+    "result = tms.geometric_mean([1, 2, 4, 8])\nprint(result)",
+    "2.8284271247461876"
+  ],
+  "harmonic_mean(data)": [
+    "result = tms.harmonic_mean([1, 2, 4])\nprint(result)",
+    "1.7142857142857142"
+  ],
+  "median_low(data)": [
+    "result = tms.median_low([1, 3, 2, 4])\nprint(result)",
+    "2"
+  ],
+  "median_high(data)": [
+    "result = tms.median_high([1, 3, 2, 4])\nprint(result)",
+    "3"
+  ],
+  "multimode(data)": [
+    "result = tms.multimode([1, 1, 2, 2, 3])\nprint(result)",
+    "[1, 2]"
+  ],
+  "pvariance(data, mu=None)": [
+    "result = tms.pvariance([1, 2, 3, 4])\nprint(result)",
+    "1.25"
+  ],
+  "pstdev(data, mu=None)": [
+    "result = tms.pstdev([1, 2, 3, 4])\nprint(result)",
+    "1.118033988749895"
+  ],
+  "covariance(x, y)": [
+    "result = tms.covariance(([1, 2, 3], [2, 4, 6]))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "correlation(x, y)": [
+    "result = tms.correlation(([1, 2, 3], [2, 4, 6]))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "linear_regression(x, y)": [
+    "result = tms.linear_regression(([1, 2, 3], [2, 4, 6]))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "quantiles(data, n=4)": [
+    "result = tms.quantiles([1, 2, 3, 4, 5, 6, 7, 8])\nprint(result)",
+    "[2.75, 4.5, 6.25]"
+  ],
+  "z_score(x, data)": [
+    "result = tms.z_score((5, [1, 2, 3, 4, 5]))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "range_(data)": [
+    "result = tms.range_([1, 9, 4, 2])\nprint(result)",
+    "8"
+  ],
+  "midrange(data)": [
+    "result = tms.midrange([1, 9, 4, 2])\nprint(result)",
+    "5.0"
+  ],
+  "skewness(data)": [
+    "result = tms.skewness([1, 2, 3, 4, 5])\nprint(result)",
+    "0.0"
+  ],
+  "kurtosis(data)": [
+    "result = tms.kurtosis([1, 2, 3, 4, 5])\nprint(result)",
+    "-1.2999999999999996"
+  ],
+  "binomial_probability(n, k, p)": [
+    "result = tms.binomial_probability((5, 2, 0.5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poisson_probability(lam, k)": [
+    "result = tms.poisson_probability((3, 2))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "normal_pdf(x, mu=0.0, sigma=1.0)": [
+    "result = tms.normal_pdf(0)\nprint(result)",
+    "0.39894228040143265"
+  ],
+  "normal_cdf(x, mu=0.0, sigma=1.0)": [
+    "result = tms.normal_cdf(0)\nprint(result)",
+    "0.5000000005"
+  ],
+  "exponential_pdf(x, lam)": [
+    "result = tms.exponential_pdf((1, 2))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "exponential_cdf(x, lam)": [
+    "result = tms.exponential_cdf((1, 2))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "uniform_pdf(x, a, b)": [
+    "result = tms.uniform_pdf((0.5, 0, 1))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "uniform_cdf(x, a, b)": [
+    "result = tms.uniform_cdf((0.5, 0, 1))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "geometric_pdf(k, p)": [
+    "result = tms.geometric_pdf((3, 0.5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "binomial_mean(n, p)": [
+    "result = tms.binomial_mean((5, 0.5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "binomial_variance(n, p)": [
+    "result = tms.binomial_variance((5, 0.5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "vector_projection(a, b)": [
+    "result = tms.vector_projection(([3, 4], [1, 0]))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "vector_reflection(v, normal)": [
+    "result = tms.vector_reflection(([1, 2], [0, 1]))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "matrix_power(m, n)": [
+    "result = tms.matrix_power(([[1, 1], [1, 0]], 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "matrix_from_function(rows, cols, f)": [
+    "result = tms.matrix_from_function((2, 2, lambda i, j: i + j))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "rotation_matrix_2d(theta)": [
+    "result = tms.rotation_matrix_2d(tms.PI / 2)\nprint(result)",
+    "Matrix([[4.5907218229751464e-17, -1.0000000000000002], [1.0000000000000002, 4.5907218229751464e-17]])"
+  ],
+  "rotation_matrix_x(theta)": [
+    "result = tms.rotation_matrix_x(tms.PI / 2)\nprint(result)",
+    "Matrix([[1, 0, 0], [0, 4.5907218229751464e-17, -1.0000000000000002], [0, 1.0000000000000002, 4.5907218229751464e-17]])"
+  ],
+  "rotation_matrix_y(theta)": [
+    "result = tms.rotation_matrix_y(tms.PI / 2)\nprint(result)",
+    "Matrix([[4.5907218229751464e-17, 0, 1.0000000000000002], [0, 1, 0], [-1.0000000000000002, 0, 4.5907218229751464e-17]])"
+  ],
+  "rotation_matrix_z(theta)": [
+    "result = tms.rotation_matrix_z(tms.PI / 2)\nprint(result)",
+    "Matrix([[4.5907218229751464e-17, -1.0000000000000002, 0], [1.0000000000000002, 4.5907218229751464e-17, 0], [0, 0, 1]])"
+  ],
+  "scaling_matrix(sx, sy)": [
+    "result = tms.scaling_matrix((2, 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "translation_apply(point, dx, dy)": [
+    "result = tms.translation_apply(((1, 1), 2, 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "distance_2d(p1, p2)": [
+    "result = tms.distance_2d(((0, 0), (3, 4)))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "distance_3d(p1, p2)": [
+    "result = tms.distance_3d(((0, 0, 0), (1, 2, 2)))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "triangle_area(a, b, c)": [
+    "result = tms.triangle_area((3, 4, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "triangle_area_coords(p1, p2, p3)": [
+    "result = tms.triangle_area_coords(((0, 0), (4, 0), (0, 3)))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "circle_area(r)": [
+    "result = tms.circle_area(3)\nprint(result)",
+    "28.274333882308138"
+  ],
+  "circle_circumference(r)": [
+    "result = tms.circle_circumference(3)\nprint(result)",
+    "18.84955592153876"
+  ],
+  "sphere_volume(r)": [
+    "result = tms.sphere_volume(3)\nprint(result)",
+    "113.09733552923254"
+  ],
+  "sphere_surface_area(r)": [
+    "result = tms.sphere_surface_area(3)\nprint(result)",
+    "113.09733552923255"
+  ],
+  "cylinder_volume(r, h)": [
+    "result = tms.cylinder_volume((3, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "cylinder_surface_area(r, h)": [
+    "result = tms.cylinder_surface_area((3, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "cone_volume(r, h)": [
+    "result = tms.cone_volume((3, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "cone_surface_area(r, h)": [
+    "result = tms.cone_surface_area((3, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "regular_polygon_area(n, side)": [
+    "result = tms.regular_polygon_area((6, 2))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "regular_polygon_perimeter(n, side)": [
+    "result = tms.regular_polygon_perimeter((6, 2))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "law_of_cosines(a, b, gamma_angle)": [
+    "result = tms.law_of_cosines((3, 4, tms.PI / 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "law_of_sines_ratio(a, angle_a)": [
+    "result = tms.law_of_sines_ratio((5, tms.PI / 6))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "heron_perimeter(a, b, c)": [
+    "result = tms.heron_perimeter((3, 4, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "polygon_area_shoelace(points)": [
+    "result = tms.polygon_area_shoelace([(0, 0), (4, 0), (4, 3)])\nprint(result)",
+    "6.0"
+  ],
+  "centroid(points)": [
+    "result = tms.centroid([(0, 0), (4, 0), (4, 3)])\nprint(result)",
+    "(2.6666666666666665, 1.0)"
+  ],
+  "is_collinear(p1, p2, p3)": [
+    "result = tms.is_collinear(((0, 0), (1, 1), (2, 2)))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "midpoint(p1, p2)": [
+    "result = tms.midpoint(((0, 0), (4, 4)))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "slope(p1, p2)": [
+    "result = tms.slope(((0, 0), (4, 2)))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "line_intersection(p1, p2, p3, p4)": [
+    "result = tms.line_intersection(((0, 0), (4, 4), (0, 4), (4, 0)))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "point_in_circle(p, center, r)": [
+    "result = tms.point_in_circle(((1, 1), (0, 0), 2))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "point_in_triangle(p, a, b, c)": [
+    "result = tms.point_in_triangle(((1, 1), (0, 0), (4, 0), (0, 3)))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "derivative(f, x, h=1e-6)": [
+    "result = tms.derivative((lambda x: x * x, 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "second_derivative(f, x, h=1e-4)": [
+    "result = tms.second_derivative((lambda x: x * x, 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "integral_trapezoid(f, a, b, n=1000)": [
+    "result = tms.integral_trapezoid((lambda x: x, 0, 1))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "integral_simpson(f, a, b, n=1000)": [
+    "result = tms.integral_simpson((lambda x: x, 0, 1))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "newton_raphson(f, fprime, x0, tol, max_iter)": [
+    "result = tms.newton_raphson((lambda x: x * x - 4, lambda x: 2 * x, 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "bisection_method(f, a, b, tol, max_iter)": [
+    "result = tms.bisection_method((lambda x: x * x - 4, 0, 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "taylor_series_exp(x, terms=20)": [
+    "result = tms.taylor_series_exp(1)\nprint(result)",
+    "2.7182818284590455"
+  ],
+  "secant_method(f, x0, x1, tol, max_iter)": [
+    "result = tms.secant_method((lambda x: x * x - 4, 0, 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "golden_section_search(f, a, b, tol)": [
+    "result = tms.golden_section_search((lambda x: (x - 2) ** 2, 0, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "convert_celsius_to_fahrenheit(c)": [
+    "result = tms.convert_celsius_to_fahrenheit(0)\nprint(result)",
+    "32.0"
+  ],
+  "convert_fahrenheit_to_celsius(f)": [
+    "result = tms.convert_fahrenheit_to_celsius(32)\nprint(result)",
+    "0.0"
+  ],
+  "convert_celsius_to_kelvin(c)": [
+    "result = tms.convert_celsius_to_kelvin(0)\nprint(result)",
+    "273.15"
+  ],
+  "convert_kelvin_to_celsius(k)": [
+    "result = tms.convert_kelvin_to_celsius(273.15)\nprint(result)",
+    "0.0"
+  ],
+  "convert_km_to_miles(km)": [
+    "result = tms.convert_km_to_miles(1)\nprint(result)",
+    "0.621371"
+  ],
+  "convert_miles_to_km(miles)": [
+    "result = tms.convert_miles_to_km(1)\nprint(result)",
+    "1.6093444978925633"
+  ],
+  "convert_kg_to_pounds(kg)": [
+    "result = tms.convert_kg_to_pounds(1)\nprint(result)",
+    "2.20462"
+  ],
+  "convert_pounds_to_kg(lb)": [
+    "result = tms.convert_pounds_to_kg(1)\nprint(result)",
+    "0.45359290943563974"
+  ],
+  "convert_degrees_to_radians(d)": [
+    "result = tms.convert_degrees_to_radians(180)\nprint(result)",
+    "Error: NameError"
+  ],
+  "convert_radians_to_degrees(r)": [
+    "result = tms.convert_radians_to_degrees(tms.PI)\nprint(result)",
+    "Error: NameError"
+  ],
+  "lagrange_interpolation(points, x)": [
+    "result = tms.lagrange_interpolation(([(0, 1), (1, 3), (2, 5)], 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "newton_divided_difference(points, x)": [
+    "result = tms.newton_divided_difference(([(0, 1), (1, 3), (2, 5)], 3))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "linear_interpolation(x0, y0, x1, y1, x)": [
+    "result = tms.linear_interpolation((0, 0, 10, 20, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "bilinear_interpolation(...)": [
+    "result = tms.bilinear_interpolation((0, 0, 10, 0, 0, 10, 10, 10, 5, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "continued_fraction(x, depth=15)": [
+    "result = tms.continued_fraction(3.245)\nprint(result)",
+    "[3, 4, 12, 3, 1, 247777268231, 4, 1, 2, 1, 2, 1, 34, 1, 3]"
+  ],
+  "convergent_from_continued_fraction(terms)": [
+    "result = tms.convergent_from_continued_fraction([1, 2, 2])\nprint(result)",
+    "(7, 5)"
+  ],
+  "egyptian_fraction(numerator, denominator)": [
+    "result = tms.egyptian_fraction((4, 13))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "lcg_random(seed, a=1103515245, c=12345, m=2 ** 31)": [
+    "result = tms.lcg_random(2, 2, 2, 2)\nprint(result)",
+    "0"
+  ],
+  "lcg_sequence(seed, n, a=1103515245, c=12345, m=2 ** 31)": [
+    "result = tms.lcg_sequence(2, 2, 2, 2, 2)\nprint(result)",
+    "[0, 0]"
+  ],
+  "to_base(n, base)": [
+    "result = tms.to_base(2, 2)\nprint(result)",
+    "'10'"
+  ],
+  "from_base(s, base)": [
+    "result = tms.from_base(2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "roman_to_int(s)": [
+    "result = tms.roman_to_int(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "int_to_roman(n)": [
+    "result = tms.int_to_roman(2)\nprint(result)",
+    "'II'"
+  ],
+  "arithmetic_series_sum(a1, d, n)": [
+    "result = tms.arithmetic_series_sum(2, 2, 2)\nprint(result)",
+    "6.0"
+  ],
+  "geometric_series_sum(a1, r, n)": [
+    "result = tms.geometric_series_sum(2, 2, 2)\nprint(result)",
+    "6.0"
+  ],
+  "infinite_geometric_series_sum(a1, r)": [
+    "result = tms.infinite_geometric_series_sum(2, 2)\nprint(result)",
+    "Error: ValueError"
+  ],
+  "lerp(a, b, t)": [
+    "result = tms.lerp(2, 2, 2)\nprint(result)",
+    "2"
+  ],
+  "clamp(x, lo, hi)": [
+    "result = tms.clamp(2, 2, 2)\nprint(result)",
+    "2"
+  ],
+  "smoothstep(edge0, edge1, x)": [
+    "result = tms.smoothstep(2, 2, 2)\nprint(result)",
+    "Error: ZeroDivisionError"
+  ],
+  "sign(x)": [
+    "result = tms.sign(2)\nprint(result)",
+    "1"
+  ],
+  "relu(x)": [
+    "result = tms.relu(2)\nprint(result)",
+    "2"
+  ],
+  "sigmoid(x)": [
+    "result = tms.sigmoid(2)\nprint(result)",
+    "0.8807970779778825"
+  ],
+  "softplus(x)": [
+    "result = tms.softplus(2)\nprint(result)",
+    "2.1269280110429714"
+  ],
+  "tanh_derivative(x)": [
+    "result = tms.tanh_derivative(2)\nprint(result)",
+    "0.07065082485316443"
+  ],
+  "sigmoid_derivative(x)": [
+    "result = tms.sigmoid_derivative(2)\nprint(result)",
+    "0.10499358540350645"
+  ],
+  "euclidean_norm(v)": [
+    "result = tms.euclidean_norm(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "manhattan_distance(p1, p2)": [
+    "result = tms.manhattan_distance(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "chebyshev_distance(p1, p2)": [
+    "result = tms.chebyshev_distance(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "minkowski_distance(p1, p2, p)": [
+    "result = tms.minkowski_distance(2, 2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "cosine_similarity(a, b)": [
+    "result = tms.cosine_similarity(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_sub(a, b)": [
+    "result = tms.poly_sub(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_scale(a, s)": [
+    "result = tms.poly_scale(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_neg(a)": [
+    "result = tms.poly_neg(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_divmod(a, b)": [
+    "result = tms.poly_divmod(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_div(a, b)": [
+    "result = tms.poly_div(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_mod(a, b)": [
+    "result = tms.poly_mod(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_gcd(a, b)": [
+    "result = tms.poly_gcd(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_differentiate(coeffs)": [
+    "result = tms.poly_differentiate(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_integrate(coeffs, c=0.0)": [
+    "result = tms.poly_integrate(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_roots_cubic(a, b, c, d)": [
+    "result = tms.poly_roots_cubic(2, 2, 2, 2)\nprint(result)",
+    "(-0.9999999999999998, (-5.551115123125783e-17, 1.0), (-5.551115123125783e-17, -1.0))"
+  ],
+  "poly_companion_matrix(coeffs)": [
+    "result = tms.poly_companion_matrix(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_compose(f, g)": [
+    "result = tms.poly_compose(lambda x: x * x - 4, lambda x: x * x - 4)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_from_roots(roots)": [
+    "result = tms.poly_from_roots(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_degree(coeffs)": [
+    "result = tms.poly_degree(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_strip(coeffs, tol=1e-12)": [
+    "result = tms.poly_strip(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_integral_definite(coeffs, a, b)": [
+    "result = tms.poly_integral_definite(2, 2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_to_str(coeffs, var='x')": [
+    "result = tms.poly_to_str(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_lagrange(points)": [
+    "result = tms.poly_lagrange([1, 2, 3, 4])\nprint(result)",
+    "Error: TypeError"
+  ],
+  "poly_chebyshev_t(n)": [
+    "result = tms.poly_chebyshev_t(2)\nprint(result)",
+    "[2.0, 0.0, -1.0]"
+  ],
+  "poly_legendre(n)": [
+    "result = tms.poly_legendre(2)\nprint(result)",
+    "[1.5, 0.0, -0.5]"
+  ],
+  "poly_hermite(n)": [
+    "result = tms.poly_hermite(2)\nprint(result)",
+    "[4.0, 0.0, -2.0]"
+  ],
+  "poly_laguerre(n)": [
+    "result = tms.poly_laguerre(2)\nprint(result)",
+    "[1.5, 0.0, 0.0]"
+  ],
+  "caesar_bruteforce(text)": [
+    "result = tms.caesar_bruteforce(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "vigenere_encrypt(text, key)": [
+    "result = tms.vigenere_encrypt(2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "vigenere_decrypt(text, key)": [
+    "result = tms.vigenere_decrypt(2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "atbash_encrypt(text)": [
+    "result = tms.atbash_encrypt(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "atbash_decrypt(text)": [
+    "result = tms.atbash_decrypt(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "affine_encrypt(text, a, b)": [
+    "result = tms.affine_encrypt(2, 2, 2)\nprint(result)",
+    "Error: ValueError"
+  ],
+  "affine_decrypt(text, a, b)": [
+    "result = tms.affine_decrypt(2, 2, 2)\nprint(result)",
+    "Error: ValueError"
+  ],
+  "rail_fence_encrypt(text, rails)": [
+    "result = tms.rail_fence_encrypt(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "rail_fence_decrypt(text, rails)": [
+    "result = tms.rail_fence_decrypt(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "columnar_encrypt(text, key)": [
+    "result = tms.columnar_encrypt(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "simple_substitution_encrypt(text, alphabet_map)": [
+    "result = tms.simple_substitution_encrypt(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "simple_substitution_decrypt(text, alphabet_map)": [
+    "result = tms.simple_substitution_decrypt(2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "is_prime_miller_rabin(n, witnesses=None)": [
+    "result = tms.is_prime_miller_rabin(2, 2)\nprint(result)",
+    "True"
+  ],
+  "diffie_hellman_keypair(p, g, private_key)": [
+    "result = tms.diffie_hellman_keypair(2, lambda x: x * x - 4, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "diffie_hellman_shared_secret(public_other, private_self, p)": [
+    "result = tms.diffie_hellman_shared_secret(2, 2, 2)\nprint(result)",
+    "0"
+  ],
+  "xor_cipher(data, key)": [
+    "result = tms.xor_cipher([1, 2, 3, 4], 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "text_to_bits(text)": [
+    "result = tms.text_to_bits(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "bits_to_text(bits)": [
+    "result = tms.bits_to_text(2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "hamming_distance(s1, s2)": [
+    "result = tms.hamming_distance(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "checksum_sum(data)": [
+    "result = tms.checksum_sum([1, 2, 3, 4])\nprint(result)",
+    "10"
+  ],
+  "checksum_xor(data)": [
+    "result = tms.checksum_xor([1, 2, 3, 4])\nprint(result)",
+    "4"
+  ],
+  "luhn_check(number)": [
+    "result = tms.luhn_check(2)\nprint(result)",
+    "False"
+  ],
+  "luhn_generate(partial)": [
+    "result = tms.luhn_generate(2)\nprint(result)",
+    "26"
+  ],
+  "mod_hash(text, m=997)": [
+    "result = tms.mod_hash(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "rolling_hash(text, window, base=31, mod=10**9+7)": [
+    "result = tms.rolling_hash(2, 2, 2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "string_similarity_coefficient(s1, s2)": [
+    "result = tms.string_similarity_coefficient(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "add_vertex(v)": [
+    "result = tms.add_vertex(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "add_edge(u, v, weight=1)": [
+    "result = tms.add_edge(2, 2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "remove_edge(u, v)": [
+    "result = tms.remove_edge(2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "remove_vertex(v)": [
+    "result = tms.remove_vertex(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "neighbors(v)": [
+    "result = tms.neighbors(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "weight(u, v)": [
+    "result = tms.weight(2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "vertices()": [
+    "result = tms.vertices()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "edges()": [
+    "result = tms.edges()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "degree(v)": [
+    "result = tms.degree(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "in_degree(v)": [
+    "result = tms.in_degree(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "out_degree(v)": [
+    "result = tms.out_degree(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "has_edge(u, v)": [
+    "result = tms.has_edge(2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "bfs(start)": [
+    "result = tms.bfs(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "dfs(start)": [
+    "result = tms.dfs(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "has_path(start, end)": [
+    "result = tms.has_path(2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "dijkstra(start)": [
+    "result = tms.dijkstra(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "shortest_path(start, end)": [
+    "result = tms.shortest_path(2, 2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "bellman_ford(start)": [
+    "result = tms.bellman_ford(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "floyd_warshall()": [
+    "result = tms.floyd_warshall()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "is_connected()": [
+    "result = tms.is_connected()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "topological_sort()": [
+    "result = tms.topological_sort()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "minimum_spanning_tree_kruskal()": [
+    "result = tms.minimum_spanning_tree_kruskal()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "has_cycle_undirected()": [
+    "result = tms.has_cycle_undirected()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "is_bipartite()": [
+    "result = tms.is_bipartite()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "connected_components()": [
+    "result = tms.connected_components()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "density()": [
+    "result = tms.density()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "vertex_count()": [
+    "result = tms.vertex_count()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "edge_count()": [
+    "result = tms.edge_count()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "adjacency_matrix()": [
+    "result = tms.adjacency_matrix()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "degree_sequence()": [
+    "result = tms.degree_sequence()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "eccentricity(v)": [
+    "result = tms.eccentricity(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "diameter()": [
+    "result = tms.diameter()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "radius()": [
+    "result = tms.radius()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "center()": [
+    "result = tms.center()\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "graph_from_edge_list(edges, directed=False)": [
+    "result = tms.graph_from_edge_list(2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "graph_complete(n)": [
+    "result = tms.graph_complete(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C4A32C550>"
+  ],
+  "graph_cycle(n)": [
+    "result = tms.graph_cycle(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C4A32C2D0>"
+  ],
+  "graph_path(n)": [
+    "result = tms.graph_path(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C49EAAFD0>"
+  ],
+  "graph_star(n)": [
+    "result = tms.graph_star(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C49EAB6F0>"
+  ],
+  "traveling_salesman_brute(graph)": [
+    "result = tms.traveling_salesman_brute(2)\nprint(result)",
+    "Error: AttributeError"
+  ],
+  "selection_sort(arr)": [
+    "result = tms.selection_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "insertion_sort(arr)": [
+    "result = tms.insertion_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "merge_sort(arr)": [
+    "result = tms.merge_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "quick_sort(arr)": [
+    "result = tms.quick_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "heap_sort(arr)": [
+    "result = tms.heap_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "counting_sort(arr, max_val=None)": [
+    "result = tms.counting_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "radix_sort(arr)": [
+    "result = tms.radix_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "shell_sort(arr)": [
+    "result = tms.shell_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "bucket_sort(arr, num_buckets=10)": [
+    "result = tms.bucket_sort([0.42, 0.32, 0.23])\nprint(result)",
+    "[0.23, 0.32, 0.42]"
+  ],
+  "binary_search_leftmost(arr, target)": [
+    "result = tms.binary_search_leftmost(([1, 2, 2, 2, 3], 2))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "binary_search_rightmost(arr, target)": [
+    "result = tms.binary_search_rightmost(([1, 2, 2, 2, 3], 2))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "interpolation_search(arr, target)": [
+    "result = tms.interpolation_search(([1, 2, 3, 4, 5], 4))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "exponential_search(arr, target)": [
+    "result = tms.exponential_search(([1, 2, 3, 4, 5], 4))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "ternary_search(f, lo, hi, tol)": [
+    "result = tms.ternary_search((lambda x: (x - 2) ** 2, 0, 5))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "longest_common_substring(s1, s2)": [
+    "result = tms.longest_common_substring((\"ababc\", \"babca\"))\nprint(result)",
+    "Error: TypeError"
+  ],
+  "longest_increasing_subsequence(arr)": [
+    "result = tms.longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18])\nprint(result)",
+    "4"
+  ],
+  "max_subarray(arr)": [
+    "result = tms.max_subarray([1, 2, 3, 4])\nprint(result)",
+    "10"
+  ],
+  "max_subarray_indices(arr)": [
+    "result = tms.max_subarray_indices([1, 2, 3, 4])\nprint(result)",
+    "(0, 3, 10)"
+  ],
+  "two_sum(arr, target)": [
+    "result = tms.two_sum([1, 2, 3, 4], 2)\nprint(result)",
+    "None"
+  ],
+  "three_sum(arr, target)": [
+    "result = tms.three_sum([1, 2, 3, 4], 2)\nprint(result)",
+    "[]"
+  ],
+  "flatten(nested)": [
+    "result = tms.flatten(2)\nprint(result)",
+    "[2]"
+  ],
+  "rotate_list(arr, k)": [
+    "result = tms.rotate_list([1, 2, 3, 4], 2)\nprint(result)",
+    "[3, 4, 1, 2]"
+  ],
+  "chunk_list(arr, size)": [
+    "result = tms.chunk_list([1, 2, 3, 4], 2)\nprint(result)",
+    "[[1, 2], [3, 4]]"
+  ],
+  "sliding_window_max(arr, k)": [
+    "result = tms.sliding_window_max([1, 2, 3, 4], 2)\nprint(result)",
+    "[2, 3, 4]"
+  ],
+  "sliding_window_sum(arr, k)": [
+    "result = tms.sliding_window_sum([1, 2, 3, 4], 2)\nprint(result)",
+    "[3, 5, 7]"
+  ],
+  "running_average(arr)": [
+    "result = tms.running_average([1, 2, 3, 4])\nprint(result)",
+    "[1.0, 1.5, 2.0, 2.5]"
+  ],
+  "cumulative_sum(arr)": [
+    "result = tms.cumulative_sum([1, 2, 3, 4])\nprint(result)",
+    "[1, 3, 6, 10]"
+  ],
+  "cumulative_product(arr)": [
+    "result = tms.cumulative_product([1, 2, 3, 4])\nprint(result)",
+    "[1, 2, 6, 24]"
+  ],
+  "moving_average(arr, window)": [
+    "result = tms.moving_average([1, 2, 3, 4], 2)\nprint(result)",
+    "[1.5, 2.5, 3.5]"
+  ],
+  "zip_with(f, a, b)": [
+    "result = tms.zip_with(lambda x: x * x - 4, 2, 2)\nprint(result)",
+    "Error: TypeError"
+  ],
+  "difference_array(arr)": [
+    "result = tms.difference_array([1, 2, 3, 4])\nprint(result)",
+    "[1, 1, 1]"
+  ],
+  "second_difference_array(arr)": [
+    "result = tms.second_difference_array([1, 2, 3, 4])\nprint(result)",
+    "[0, 0]"
+  ]
+}

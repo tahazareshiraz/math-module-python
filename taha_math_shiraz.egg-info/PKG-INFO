@@ -1,3 +1,13 @@
+Metadata-Version: 2.4
+Name: taha-math-shiraz
+Version: 1.1.0
+Summary: A pure-Python math utility library.
+Author: Tahazare
+License: MIT
+Keywords: math,statistics,number-theory,linear-algebra
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
 # taha-math-shiraz
 
 A pure-Python library that reimplements Python's built-in `math` module

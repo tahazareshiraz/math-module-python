@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="math-module-logo.png">
+  <title>taha_math_shiraz Documentation</title>
+  <link rel="stylesheet" href="style_English.css">
+</head>
+<body>
+  <aside class="toc" id="toc">
+    <div class="toc-head">
+      <strong>Contents</strong>
+      <span class="small">Sections</span>
+    </div>
+    <input id="filter" class="search" type="text" placeholder="Search the docs..." />
+    <ul id="tocList"></ul>
+  </aside>
+
+  <div class="page">
+    <header class="hero">
+      <h1>taha_math_shiraz Documentation</h1>
+      <p>This page is the main reference for the library. It explains each module with descriptions, examples, outputs, and practical notes, so it can be used both as a quick overview and as a detailed developer reference.</p>
+      <p class="meta">This document explains the main modules, functions, classes, and methods of the library in English.</p>
+      <div class="note">
+        <strong>Note:</strong> This package is an educational/general-purpose toolkit for mathematics, numerical methods, graphs, simple cryptography, and helper utilities.
+      </div>
+    </header>
+
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>The <code>__init__.py</code> file re-exports the public API so you can use the package directly from the root namespace.</p>
+      <pre><code>import taha_math_shiraz as tms
+
+print(tms.PI)
+print(tms.sqrt(2))
+print(tms.Graph())</code></pre>
+    </section>
+
+    <div id="content"></div>
+  </div>
+  <script>
+    const docs = [
+      ["constants","Constants","constants.py",[
+        ["PI","The constant pi with high precision"],["TAU","Two times PI"],["E","Euler's number"],["INF","Positive infinity"],["NAN","Not-a-Number value"],["SQRT2","Square root of 2"],["LN2","Natural logarithm of 2"],["LN10","Natural logarithm of 10"]
+      ]],
+      ["basics","Basic Functions","basics.py",[
+        ["isnan(x)","Checks whether x is NaN"],["isinf(x)","Checks whether x is infinite"],["isfinite(x)","Checks whether x is finite"],["copysign(x, y)","Returns x with the sign of y"],["fabs(x)","Absolute value"],["trunc(x)","Truncates toward zero"],["floor(x)","Floor"],["ceil(x)","Ceiling"],["fmod(x, y)","Floating-point remainder"],["remainder(x, y)","Remainder based on rounding"],["modf(x)","Splits into fractional and integer parts"]
+      ]],
+      ["numtheory_core","Number Theory Core","numtheory_core.py",[
+        ["factorial(n)","Factorial"],["gcd(*args)","Greatest common divisor"],["lcm(*args)","Least common multiple"],["isqrt(n)","Integer square root"]
+      ]],
+      ["power","Powers, Roots and Logs","power.py",[
+        ["sqrt(x)","Approximate square root"],["cbrt(x)","Approximate cube root"],["pow_(x, y)","General exponentiation"],["exp(x)","Exponential function"],["expm1(x)","exp(x) - 1"],["log1p(x)","log(1+x)"],["log(x, base=None)","Natural log or log with base"],["log2(x)","Base-2 logarithm"],["log10(x)","Base-10 logarithm"]
+      ]],
+      ["trigonometry","Trigonometry and Hyperbolic Functions","trigonometry.py",[
+        ["degrees(x)","Convert radians to degrees"],["radians(x)","Convert degrees to radians"],["sin(x)","Sine"],["cos(x)","Cosine"],["tan(x)","Tangent"],["sinh(x)","Hyperbolic sine"],["cosh(x)","Hyperbolic cosine"],["tanh(x)","Hyperbolic tangent"],["asinh(x)","Inverse hyperbolic sine"],["acosh(x)","Inverse hyperbolic cosine"],["atanh(x)","Inverse hyperbolic tangent"],["asin(x)","Inverse sine"],["acos(x)","Inverse cosine"],["atan(x)","Inverse tangent"],["atan2(y, x)","Angle with quadrant awareness"],["hypot(*coords)","Vector length"],["dist(p, q)","Euclidean distance"]
+      ]],
+      ["aggregates","Aggregates and Combinatorics","aggregates.py",[
+        ["fsum(iterable)","More accurate summation"],["prod(iterable, start=1)","Product"],["isclose(a, b, rel_tol, abs_tol)","Approximate comparison"],["comb(n, k)","Combinations"],["perm(n, k=None)","Permutations"]
+      ]],
+      ["special","Special Functions","special.py",[
+        ["lgamma(x)","Log-gamma"],["gamma(x)","Gamma function"],["erf(x)","Error function"],["erfc(x)","Complementary error function"],["frexp(x)","Mantissa and exponent"],["ldexp(m, e)","Combine mantissa and exponent"],["nextafter(x, y)","Next representable float toward y"],["ulp(x)","Unit in the last place"],["signbit(x)","Sign bit"]
+      ]],
+      ["numbertheory","Advanced Number Theory","numbertheory.py",[
+        ["is_prime(n)","Prime test"],["next_prime(n)","Next prime"],["prev_prime(n)","Previous prime"],["prime_factors(n)","Prime factor list"],["prime_factorization(n)","Prime factor dictionary"],["divisors(n)","Divisors"],["divisor_count(n)","Number of divisors"],["divisor_sum(n)","Sum of divisors"],["is_perfect(n)","Perfect number test"],["is_abundant(n)","Abundant number test"],["is_deficient(n)","Deficient number test"],["euler_totient(n)","Euler's totient function"],["mobius(n)","Mobius function"],["fibonacci(n)","Fibonacci number"],["lucas(n)","Lucas number"],["tribonacci(n)","Tribonacci number"],["catalan(n)","Catalan number"],["bernoulli(n)","Bernoulli number"],["harmonic(n)","Harmonic number"],["digit_sum(n)","Sum of digits"],["digit_product(n)","Product of digits"],["digital_root(n)","Digital root"],["is_palindrome_number(n)","Palindrome number test"],["is_armstrong(n)","Armstrong number test"],["collatz_length(n)","Collatz sequence length"],["is_power_of_two(n)","Power-of-two test"],["bit_length(n)","Binary length"],["popcount(n)","Number of set bits"],["extended_gcd(a, b)","Extended Euclidean algorithm"],["mod_inverse(a, m)","Modular inverse"],["mod_pow(base, exp, mod)","Fast modular exponentiation"],["chinese_remainder(remainders, moduli)","Chinese remainder theorem"],["is_coprime(a, b)","Coprime test"],["jacobi_symbol(a, n)","Jacobi symbol"],["sieve_of_eratosthenes(limit)","Sieve of Eratosthenes"],["count_primes_below(limit)","Count primes below limit"],["goldbach_pair(n)","Goldbach pair"],["is_amicable_pair(a, b)","Amicable pair test"],["find_amicable_pairs(limit)","Find amicable pairs"],["polygonal_number(s, n)","General polygonal number"],["triangular_number(n)","Triangular number"],["square_number(n)","Square number"],["pentagonal_number(n)","Pentagonal number"],["hexagonal_number(n)","Hexagonal number"],["heptagonal_number(n)","Heptagonal number"],["octagonal_number(n)","Octagonal number"],["is_triangular(n)","Triangular test"],["is_square(n)","Square test"],["is_pentagonal(n)","Pentagonal test"],["pascal_triangle_row(n)","Row of Pascal's triangle"],["pascal_triangle(rows)","Pascal's triangle"],["sum_of_squares(n)","Sum of squares"],["sum_of_cubes(n)","Sum of cubes"],["is_perfect_square_fast(n)","Fast perfect-square test"]
+      ]],
+      ["statistics","Statistics","statistics_mod.py",[
+        ["mean(data)","Arithmetic mean"],["geometric_mean(data)","Geometric mean"],["harmonic_mean(data)","Harmonic mean"],["median(data)","Median"],["median_low(data)","Lower median"],["median_high(data)","Upper median"],["mode(data)","Mode"],["multimode(data)","Multiple modes"],["variance(data, xbar=None)","Sample variance"],["pvariance(data, mu=None)","Population variance"],["stdev(data, xbar=None)","Sample standard deviation"],["pstdev(data, mu=None)","Population standard deviation"],["covariance(x, y)","Covariance"],["correlation(x, y)","Correlation"],["linear_regression(x, y)","Linear regression"],["quantiles(data, n=4)","Quantiles"],["z_score(x, data)","Z-score"],["range_(data)","Range"],["midrange(data)","Midrange"],["skewness(data)","Skewness"],["kurtosis(data)","Kurtosis"]
+      ]],
+      ["probability","Probability","probability.py",[
+        ["binomial_probability(n, k, p)","Binomial probability"],["poisson_probability(lam, k)","Poisson probability"],["normal_pdf(x, mu=0.0, sigma=1.0)","Normal PDF"],["normal_cdf(x, mu=0.0, sigma=1.0)","Normal CDF"],["exponential_pdf(x, lam)","Exponential PDF"],["exponential_cdf(x, lam)","Exponential CDF"],["uniform_pdf(x, a, b)","Uniform PDF"],["uniform_cdf(x, a, b)","Uniform CDF"],["geometric_pdf(k, p)","Geometric probability"],["binomial_mean(n, p)","Binomial mean"],["binomial_variance(n, p)","Binomial variance"]
+      ]],
+      ["linalg","Linear Algebra","linalg.py",[
+        ["Vector(components)","Vector class"],["Matrix(rows)","Matrix class"],["Complex(real, imag=0.0)","Complex number class"],["vector_projection(a, b)","Vector projection"],["vector_reflection(v, normal)","Vector reflection"],["matrix_power(m, n)","Matrix power"],["matrix_from_function(rows, cols, f)","Matrix from function"],["rotation_matrix_2d(theta)","2D rotation matrix"],["rotation_matrix_x(theta)","Rotation about x"],["rotation_matrix_y(theta)","Rotation about y"],["rotation_matrix_z(theta)","Rotation about z"],["scaling_matrix(sx, sy)","Scaling matrix"],["translation_apply(point, dx, dy)","Apply translation"]
+      ]],
+      ["geometry","Geometry","geometry.py",[
+        ["distance_2d(p1, p2)","Distance in 2D"],["distance_3d(p1, p2)","Distance in 3D"],["triangle_area(a, b, c)","Triangle area from sides"],["triangle_area_coords(p1, p2, p3)","Triangle area from coordinates"],["circle_area(r)","Circle area"],["circle_circumference(r)","Circle circumference"],["sphere_volume(r)","Sphere volume"],["sphere_surface_area(r)","Sphere surface area"],["cylinder_volume(r, h)","Cylinder volume"],["cylinder_surface_area(r, h)","Cylinder surface area"],["cone_volume(r, h)","Cone volume"],["cone_surface_area(r, h)","Cone surface area"],["regular_polygon_area(n, side)","Regular polygon area"],["regular_polygon_perimeter(n, side)","Regular polygon perimeter"],["law_of_cosines(a, b, gamma_angle)","Law of cosines"],["law_of_sines_ratio(a, angle_a)","Law of sines ratio"],["heron_perimeter(a, b, c)","Sum of triangle sides"],["polygon_area_shoelace(points)","Shoelace formula"],["centroid(points)","Centroid"],["is_collinear(p1, p2, p3)","Collinearity test"],["midpoint(p1, p2)","Midpoint"],["slope(p1, p2)","Slope"],["line_intersection(p1, p2, p3, p4)","Line intersection"],["point_in_circle(p, center, r)","Point in circle"],["point_in_triangle(p, a, b, c)","Point in triangle"]
+      ]],
+      ["calculus","Numerical Calculus","calculus.py",[
+        ["derivative(f, x, h=1e-6)","Numerical derivative"],["second_derivative(f, x, h=1e-4)","Second numerical derivative"],["integral_trapezoid(f, a, b, n=1000)","Trapezoidal integration"],["integral_simpson(f, a, b, n=1000)","Simpson integration"],["newton_raphson(f, fprime, x0, tol, max_iter)","Newton-Raphson root finding"],["bisection_method(f, a, b, tol, max_iter)","Bisection method"],["taylor_series_exp(x, terms=20)","Taylor approximation of e^x"],["secant_method(f, x0, x1, tol, max_iter)","Secant method"],["golden_section_search(f, a, b, tol)","Golden-section search"]
+      ]],
+      ["conversions","Unit Conversions","conversions.py",[
+        ["convert_celsius_to_fahrenheit(c)","Celsius to Fahrenheit"],["convert_fahrenheit_to_celsius(f)","Fahrenheit to Celsius"],["convert_celsius_to_kelvin(c)","Celsius to Kelvin"],["convert_kelvin_to_celsius(k)","Kelvin to Celsius"],["convert_km_to_miles(km)","Kilometers to miles"],["convert_miles_to_km(miles)","Miles to kilometers"],["convert_kg_to_pounds(kg)","Kilograms to pounds"],["convert_pounds_to_kg(lb)","Pounds to kilograms"],["convert_degrees_to_radians(d)","Degrees to radians"],["convert_radians_to_degrees(r)","Radians to degrees"]
+      ]],
+      ["interpolation","Interpolation","interpolation.py",[
+        ["lagrange_interpolation(points, x)","Lagrange interpolation"],["newton_divided_difference(points, x)","Newton divided differences"],["linear_interpolation(x0, y0, x1, y1, x)","Linear interpolation"],["bilinear_interpolation(...)","Bilinear interpolation"],["continued_fraction(x, depth=15)","Continued fraction"],["convergent_from_continued_fraction(terms)","Convergent from continued fraction"],["egyptian_fraction(numerator, denominator)","Egyptian fraction"]
+      ]],
+      ["randomutil","Pseudo-Random Utilities","randomutil.py",[
+        ["lcg_random(seed, a=1103515245, c=12345, m=2 ** 31)","One LCG step"],["lcg_sequence(seed, n, a=1103515245, c=12345, m=2 ** 31)","LCG sequence"]
+      ]],
+      ["baseconv","Base Conversion and Roman Numerals","baseconv.py",[
+        ["to_base(n, base)","Convert integer to another base"],["from_base(s, base)","Convert from another base"],["roman_to_int(s)","Roman numeral to integer"],["int_to_roman(n)","Integer to Roman numeral"]
+      ]],
+      ["series","Series","series.py",[
+        ["arithmetic_series_sum(a1, d, n)","Arithmetic series sum"],["geometric_series_sum(a1, r, n)","Finite geometric series sum"],["infinite_geometric_series_sum(a1, r)","Infinite geometric series sum"]
+      ]],
+      ["activations","Activation Functions","activations.py",[
+        ["lerp(a, b, t)","Linear interpolation"],["clamp(x, lo, hi)","Clamp value"],["smoothstep(edge0, edge1, x)","Smoothstep"],["sign(x)","Sign"],["relu(x)","ReLU"],["sigmoid(x)","Sigmoid"],["softplus(x)","Softplus"],["tanh_derivative(x)","Derivative of tanh"],["sigmoid_derivative(x)","Derivative of sigmoid"]
+      ]],
+      ["metrics","Metrics","metrics.py",[
+        ["euclidean_norm(v)","Euclidean norm"],["manhattan_distance(p1, p2)","Manhattan distance"],["chebyshev_distance(p1, p2)","Chebyshev distance"],["minkowski_distance(p1, p2, p)","Minkowski distance"],["cosine_similarity(a, b)","Cosine similarity"]
+      ]],
+      ["polynomial","Polynomials","polynomial.py",[
+        ["poly_eval(coeffs, x)","Evaluate polynomial"],["poly_add(a, b)","Add polynomials"],["poly_sub(a, b)","Subtract polynomials"],["poly_mul(a, b)","Multiply polynomials"],["poly_scale(a, s)","Scale polynomial"],["poly_neg(a)","Negate polynomial"],["poly_divmod(a, b)","Polynomial long division"],["poly_div(a, b)","Quotient"],["poly_mod(a, b)","Remainder"],["poly_gcd(a, b)","Polynomial gcd"],["poly_differentiate(coeffs)","Derivative"],["poly_integrate(coeffs, c=0.0)","Indefinite integral"],["poly_roots_quadratic(a, b, c)","Quadratic roots"],["poly_roots_cubic(a, b, c, d)","Cubic roots"],["poly_companion_matrix(coeffs)","Companion matrix"],["poly_compose(f, g)","Polynomial composition"],["poly_from_roots(roots)","Build from roots"],["poly_degree(coeffs)","Polynomial degree"],["poly_strip(coeffs, tol=1e-12)","Strip leading zeros"],["poly_integral_definite(coeffs, a, b)","Definite integral"],["poly_to_str(coeffs, var='x')","String form"],["poly_lagrange(points)","Lagrange polynomial"],["poly_chebyshev_t(n)","Chebyshev T"],["poly_legendre(n)","Legendre polynomial"],["poly_hermite(n)","Hermite polynomial"],["poly_laguerre(n)","Laguerre polynomial"]
+      ]],
+      ["datatypes","Custom Data Types","datatypes.py",[
+        ["Fraction(numerator=0, denominator=1)","Rational fraction"],["FixedDecimal(value=0, precision=2)","Fixed-precision decimal"],["Interval(lo, hi)","Numeric interval"],["Ratio(a, b)","Simplified ratio"]
+      ]],
+      ["crypto","Educational Cryptography","crypto.py",[
+        ["caesar_encrypt(text, shift)","Caesar cipher"],["caesar_decrypt(text, shift)","Caesar decryption"],["caesar_bruteforce(text)","Try every shift"],["vigenere_encrypt(text, key)","Vigenere cipher"],["vigenere_decrypt(text, key)","Vigenere decryption"],["atbash_encrypt(text)","Atbash cipher"],["atbash_decrypt(text)","Atbash decryption"],["rot13(text)","ROT13"],["affine_encrypt(text, a, b)","Affine cipher"],["affine_decrypt(text, a, b)","Affine decryption"],["rail_fence_encrypt(text, rails)","Rail fence cipher"],["rail_fence_decrypt(text, rails)","Rail fence decryption"],["columnar_encrypt(text, key)","Columnar transposition"],["simple_substitution_encrypt(text, alphabet_map)","Simple substitution"],["simple_substitution_decrypt(text, alphabet_map)","Simple substitution decryption"],["is_prime_miller_rabin(n, witnesses=None)","Miller-Rabin primality test"],["rsa_generate_keys(p, q)","Generate RSA keys"],["rsa_encrypt(message, public_key)","RSA encryption"],["rsa_decrypt(ciphertext, private_key)","RSA decryption"],["diffie_hellman_keypair(p, g, private_key)","Diffie-Hellman public key"],["diffie_hellman_shared_secret(public_other, private_self, p)","Shared secret"],["xor_cipher(data, key)","XOR cipher"],["text_to_bits(text)","Text to bits"],["bits_to_text(bits)","Bits to text"],["hamming_distance(s1, s2)","Hamming distance"],["checksum_sum(data)","Sum checksum"],["checksum_xor(data)","XOR checksum"],["luhn_check(number)","Luhn check"],["luhn_generate(partial)","Generate Luhn check digit"],["mod_hash(text, m=997)","Simple modular hash"],["rolling_hash(text, window, base=31, mod=10**9+7)","Rolling hash"],["string_similarity_coefficient(s1, s2)","String similarity coefficient"]
+      ]],
+      ["graph","Graph","graph.py",[
+        ["Graph(directed=False)","Graph class"],["add_vertex(v)","Add a vertex"],["add_edge(u, v, weight=1)","Add an edge"],["remove_edge(u, v)","Remove an edge"],["remove_vertex(v)","Remove a vertex"],["neighbors(v)","Neighbors"],["weight(u, v)","Edge weight"],["vertices()","Vertex list"],["edges()","Edge list"],["degree(v)","Vertex degree"],["in_degree(v)","In-degree"],["out_degree(v)","Out-degree"],["has_edge(u, v)","Edge existence"],["bfs(start)","Breadth-first search"],["dfs(start)","Depth-first search"],["has_path(start, end)","Path existence"],["dijkstra(start)","Dijkstra"],["shortest_path(start, end)","Shortest path"],["bellman_ford(start)","Bellman-Ford"],["floyd_warshall()","Floyd-Warshall"],["is_connected()","Connected test"],["topological_sort()","Topological sort"],["minimum_spanning_tree_kruskal()","Minimum spanning tree"],["has_cycle_undirected()","Undirected cycle test"],["is_bipartite()","Bipartite test"],["connected_components()","Connected components"],["density()","Graph density"],["vertex_count()","Vertex count"],["edge_count()","Edge count"],["adjacency_matrix()","Adjacency matrix"],["degree_sequence()","Degree sequence"],["eccentricity(v)","Eccentricity"],["diameter()","Diameter"],["radius()","Radius"],["center()","Center"],["graph_from_edge_list(edges, directed=False)","Build from edge list"],["graph_complete(n)","Complete graph"],["graph_cycle(n)","Cycle graph"],["graph_path(n)","Path graph"],["graph_star(n)","Star graph"],["traveling_salesman_brute(graph)","Brute-force TSP"]
+      ]],
+      ["algorithms","Algorithms","algorithms.py",[
+        ["bubble_sort(arr)","Bubble sort"],["selection_sort(arr)","Selection sort"],["insertion_sort(arr)","Insertion sort"],["merge_sort(arr)","Merge sort"],["quick_sort(arr)","Quick sort"],["heap_sort(arr)","Heap sort"],["counting_sort(arr, max_val=None)","Counting sort"],["radix_sort(arr)","Radix sort"],["shell_sort(arr)","Shell sort"],["bucket_sort(arr, num_buckets=10)","Bucket sort"],["binary_search(arr, target)","Binary search"],["binary_search_leftmost(arr, target)","Leftmost binary search"],["binary_search_rightmost(arr, target)","Rightmost binary search"],["interpolation_search(arr, target)","Interpolation search"],["exponential_search(arr, target)","Exponential search"],["ternary_search(f, lo, hi, tol)","Ternary search"],["levenshtein_distance(s1, s2)","Levenshtein distance"],["longest_common_subsequence(s1, s2)","LCS"],["longest_common_substring(s1, s2)","Longest common substring"],["knapsack_01(weights, values, capacity)","0/1 knapsack"],["coin_change(coins, amount)","Minimum coin change"],["longest_increasing_subsequence(arr)","LIS"],["max_subarray(arr)","Maximum subarray sum"],["max_subarray_indices(arr)","Max subarray indices"],["two_sum(arr, target)","Two-sum"],["three_sum(arr, target)","Three-sum"],["flatten(nested)","Flatten nested structure"],["rotate_list(arr, k)","Rotate list"],["chunk_list(arr, size)","Chunk list"],["sliding_window_max(arr, k)","Sliding window max"],["sliding_window_sum(arr, k)","Sliding window sum"],["running_average(arr)","Running average"],["cumulative_sum(arr)","Cumulative sum"],["cumulative_product(arr)","Cumulative product"],["moving_average(arr, window)","Moving average"],["zip_with(f, a, b)","Apply function pairwise"],["difference_array(arr)","First difference array"],["second_difference_array(arr)","Second difference array"]
+      ]]
+    ];
+
+    const examples = {
+      PI: ['print(tms.PI)', '3.141592653589793'],
+      TAU: ['print(tms.TAU)', '6.283185307179586'],
+      E: ['print(tms.E)', '2.718281828459045'],
+      INF: ['print(tms.INF)', 'inf'],
+      NAN: ['print(tms.NAN)', 'nan'],
+      factorial: ['print(tms.factorial(5))', '120'],
+      gcd: ['print(tms.gcd(12, 18))', '6'],
+      lcm: ['print(tms.lcm(4, 6))', '12'],
+      isqrt: ['print(tms.isqrt(17))', '4'],
+      sqrt: ['print(round(tms.sqrt(9), 1))', '3.0'],
+      cbrt: ['print(round(tms.cbrt(27), 1))', '3.0'],
+      pow_: ['print(tms.pow_(2, 5))', '32.0'],
+      exp: ['print(round(tms.exp(1), 6))', '2.718282'],
+      log: ['print(round(tms.log(tms.E), 6))', '1.0'],
+      sin: ['print(round(tms.sin(tms.PI / 2), 6))', '1.0'],
+      cos: ['print(round(tms.cos(0), 6))', '1.0'],
+      tan: ['print(round(tms.tan(tms.PI / 4), 6))', '1.0'],
+      degrees: ['print(tms.degrees(tms.PI))', '180.0'],
+      radians: ['print(round(tms.radians(180), 6))', '3.141593'],
+      is_prime: ['print(tms.is_prime(97))', 'True'],
+      fibonacci: ['print(tms.fibonacci(10))', '55'],
+      mean: ['print(tms.mean([1, 2, 3, 4]))', '2.5'],
+      median: ['print(tms.median([1, 3, 2]))', '2.0'],
+      mode: ['print(tms.mode([1, 2, 2, 3]))', '2'],
+      variance: ['print(round(tms.variance([1, 2, 3, 4]), 6))', '1.666667'],
+      stdev: ['print(round(tms.stdev([1, 2, 3, 4]), 6))', '1.290994'],
+      comb: ['print(tms.comb(5, 2))', '10'],
+      perm: ['print(tms.perm(5, 2))', '20'],
+      Matrix: ['m = tms.Matrix([[1, 2], [3, 4]])\nprint(m.determinant())', '-2'],
+      Vector: ['v = tms.Vector([3, 4])\nprint(v.norm())', '5.0'],
+      Complex: ['z = tms.Complex(3, 4)\nprint(z.modulus())', '5.0'],
+      Fraction: ['f = tms.Fraction(6, 8)\nprint(f)', '3/4'],
+      FixedDecimal: ['d = tms.FixedDecimal(3.14, 2)\nprint(float(d))', '3.14'],
+      Interval: ['iv = tms.Interval(1, 5)\nprint(3 in iv)', 'True'],
+      Ratio: ['r = tms.Ratio(4, 6)\nprint(r.as_float())', '0.6666666666666666'],
+      Graph: ['g = tms.Graph()\ng.add_edge("A", "B")\nprint(g.bfs("A"))', "['A', 'B']"],
+      caesar_encrypt: ['print(tms.caesar_encrypt("ABC", 3))', 'DEF'],
+      caesar_decrypt: ['print(tms.caesar_decrypt("DEF", 3))', 'ABC'],
+      rot13: ['print(tms.rot13("Hello"))', 'Uryyb'],
+      rsa_generate_keys: ['pub, priv = tms.rsa_generate_keys(61, 53)\nprint(pub[1])', '3233'],
+      rsa_encrypt: ['pub, priv = tms.rsa_generate_keys(61, 53)\nprint(tms.rsa_encrypt(42, pub))', '2557'],
+      rsa_decrypt: ['pub, priv = tms.rsa_generate_keys(61, 53)\nct = tms.rsa_encrypt(42, pub)\nprint(tms.rsa_decrypt(ct, priv))', '42'],
+      bubble_sort: ['print(tms.bubble_sort([5, 3, 1]))', '[1, 3, 5]'],
+      binary_search: ['print(tms.binary_search([1, 3, 5, 7], 5))', '2'],
+      levenshtein_distance: ['print(tms.levenshtein_distance("kitten", "sitting"))', '3'],
+      longest_common_subsequence: ['print(tms.longest_common_subsequence("ABCBDAB", "BDCAB"))', '4'],
+      knapsack_01: ['print(tms.knapsack_01([1, 3, 4], [1, 4, 5], 4))', '5'],
+      coin_change: ['print(tms.coin_change([1, 5, 10], 12))', '3'],
+      poly_eval: ['print(tms.poly_eval([1, 0, -1], 3))', '8.0'],
+      poly_add: ['print(tms.poly_add([1, 2], [3, 4]))', '[4, 6]'],
+      poly_mul: ['print(tms.poly_mul([1, 1], [1, -1]))', '[1, 0, -1]'],
+      poly_roots_quadratic: ['print(tms.poly_roots_quadratic(1, -5, 6))', '(3.0, 2.0)']
+    };
+
+    const content = document.getElementById('content');
+    const tocList = document.getElementById('tocList');
+    const moduleNotes = {
+      constants: 'This section contains the core constants used across the package. They are the numeric foundation for trigonometric, logarithmic, and numerical routines.',
+      basics: 'These are lightweight, self-contained equivalents for basic numeric operations such as checking values, truncation, rounding, and floating-point remainder handling.',
+      numtheory_core: 'This module provides the minimal number-theory building blocks used by many other parts of the library, including factorial, gcd, lcm, and integer square root.',
+      power: 'This is the numerical core of the library. It provides square root, exponentiation, and logarithms without relying on Python’s math module.',
+      trigonometry: 'All main trigonometric and hyperbolic functions live here. The implementations are based on manual approximations and series expansions to keep the package independent.',
+      aggregates: 'This module groups together summation, product, combination, and permutation helpers that are heavily reused by statistics, probability, and number theory.',
+      special: 'Special functions such as gamma, erf, and floating-point helpers are placed here. They are useful for advanced numerical work and floating-point analysis.',
+      numbertheory: 'This is the largest number-theory toolkit in the package. It includes primality, factorization, modular arithmetic, sequences, polygonal numbers, and CRT utilities.',
+      statistics: 'This module covers descriptive and light inferential statistics, including averages, spread measures, correlation, and linear regression.',
+      probability: 'Basic distributions and probability helpers are provided here for educational examples and simple stochastic calculations.',
+      linalg: 'Vectors, matrices, and complex numbers are implemented here together with several geometric and linear-algebra helpers.',
+      geometry: 'Classic geometry formulas, distances, areas, volumes, and relations like the law of sines/cosines are included in this section.',
+      calculus: 'This module provides numerical differentiation, integration, and root-finding methods for approximate calculus work.',
+      conversions: 'Common unit conversions for temperature, distance, mass, and angle are grouped here.',
+      interpolation: 'Lagrange interpolation, Newton divided differences, continued fractions, and related number transformations are included here.',
+      randomutil: 'A simple linear congruential generator and sequence helper are provided in this module.',
+      baseconv: 'This module handles conversions between numeric bases and Roman numeral formatting/parsing.',
+      series: 'Arithmetic and geometric series formulas, including the convergent infinite geometric form, live here.',
+      activations: 'Useful activation and interpolation-style functions such as ReLU, sigmoid, and smoothstep are provided here.',
+      metrics: 'Distance metrics and cosine similarity helpers are grouped in this module.',
+      polynomial: 'This is a major module for polynomial arithmetic, root finding, named orthogonal polynomials, and symbolic-style manipulations.',
+      datatypes: 'Custom numeric types such as Fraction, FixedDecimal, Interval, and Ratio are implemented here.',
+      crypto: 'Educational cryptography helpers, checksums, hashes, Luhn routines, and classic ciphers like Caesar and RSA are included here.',
+      graph: 'The graph module provides adjacency-list graph representation, traversals, shortest paths, spanning trees, and ready-made graph constructors.',
+      algorithms: 'Sorting, searching, dynamic programming, and array/string algorithms are collected in this module.'
+    };
+
+    const generatedOutputs = {
+  "isnan(x)": [
+    "result = tms.isnan(float(\"nan\"))\nprint(result)",
+    "True"
+  ],
+  "isinf(x)": [
+    "result = tms.isinf(float(\"inf\"))\nprint(result)",
+    "True"
+  ],
+  "isfinite(x)": [
+    "result = tms.isfinite(3.5)\nprint(result)",
+    "True"
+  ],
+  "fabs(x)": [
+    "result = tms.fabs(-7.25)\nprint(result)",
+    "7.25"
+  ],
+  "trunc(x)": [
+    "result = tms.trunc(3.9)\nprint(result)",
+    "3"
+  ],
+  "floor(x)": [
+    "result = tms.floor(3.9)\nprint(result)",
+    "3"
+  ],
+  "ceil(x)": [
+    "result = tms.ceil(3.1)\nprint(result)",
+    "4"
+  ],
+  "modf(x)": [
+    "result = tms.modf(3.75)\nprint(result)",
+    "(0.75, 3.0)"
+  ],
+  "expm1(x)": [
+    "result = tms.expm1(1)\nprint(result)",
+    "1.7182818284590438"
+  ],
+  "log1p(x)": [
+    "result = tms.log1p(1)\nprint(result)",
+    "0.6931471805599454"
+  ],
+  "log2(x)": [
+    "result = tms.log2(8)\nprint(result)",
+    "3.0000000000000004"
+  ],
+  "log10(x)": [
+    "result = tms.log10(1000)\nprint(result)",
+    "2.9999999999999996"
+  ],
+  "sinh(x)": [
+    "result = tms.sinh(1)\nprint(result)",
+    "1.1752011936438007"
+  ],
+  "cosh(x)": [
+    "result = tms.cosh(1)\nprint(result)",
+    "1.543080634815243"
+  ],
+  "tanh(x)": [
+    "result = tms.tanh(1)\nprint(result)",
+    "0.7615941559557647"
+  ],
+  "asinh(x)": [
+    "result = tms.asinh(1)\nprint(result)",
+    "0.8813735870195429"
+  ],
+  "acosh(x)": [
+    "result = tms.acosh(2)\nprint(result)",
+    "1.3169578969248168"
+  ],
+  "atanh(x)": [
+    "result = tms.atanh(0.5)\nprint(result)",
+    "0.5493061443340549"
+  ],
+  "asin(x)": [
+    "result = tms.asin(0.5)\nprint(result)",
+    "0.5235987755982988"
+  ],
+  "acos(x)": [
+    "result = tms.acos(0.5)\nprint(result)",
+    "1.0471975511965979"
+  ],
+  "atan(x)": [
+    "result = tms.atan(1)\nprint(result)",
+    "0.7853981633974483"
+  ],
+  "fsum(iterable)": [
+    "result = tms.fsum([1, 2, 3, 4])\nprint(result)",
+    "10.0"
+  ],
+  "prod(iterable, start=1)": [
+    "result = tms.prod([2, 3, 4], 2)\nprint(result)",
+    "48"
+  ],
+  "isclose(a, b, rel_tol, abs_tol)": [
+    "result = tms.isclose(1.0, 1.0000001, 1e-5, 1e-8)\nprint(result)",
+    "True"
+  ],
+  "lgamma(x)": [
+    "result = tms.lgamma(3)\nprint(result)",
+    "0.6931471805599463"
+  ],
+  "gamma(x)": [
+    "result = tms.gamma(4)\nprint(result)",
+    "6.0"
+  ],
+  "erf(x)": [
+    "result = tms.erf(1)\nprint(result)",
+    "0.84270068974759"
+  ],
+  "erfc(x)": [
+    "result = tms.erfc(1)\nprint(result)",
+    "0.15729931025240995"
+  ],
+  "frexp(x)": [
+    "result = tms.frexp(8)\nprint(result)",
+    "(0.5, 4)"
+  ],
+  "ulp(x)": [
+    "result = tms.ulp(1.0)\nprint(result)",
+    "2.220446049250313e-16"
+  ],
+  "signbit(x)": [
+    "result = tms.signbit(-2)\nprint(result)",
+    "True"
+  ],
+  "next_prime(n)": [
+    "result = tms.next_prime(29)\nprint(result)",
+    "31"
+  ],
+  "prev_prime(n)": [
+    "result = tms.prev_prime(29)\nprint(result)",
+    "23"
+  ],
+  "prime_factors(n)": [
+    "result = tms.prime_factors(84)\nprint(result)",
+    "[2, 2, 3, 7]"
+  ],
+  "prime_factorization(n)": [
+    "result = tms.prime_factorization(84)\nprint(result)",
+    "{2: 2, 3: 1, 7: 1}"
+  ],
+  "divisors(n)": [
+    "result = tms.divisors(12)\nprint(result)",
+    "[1, 2, 3, 4, 6, 12]"
+  ],
+  "divisor_count(n)": [
+    "result = tms.divisor_count(12)\nprint(result)",
+    "6"
+  ],
+  "divisor_sum(n)": [
+    "result = tms.divisor_sum(12)\nprint(result)",
+    "28"
+  ],
+  "is_perfect(n)": [
+    "result = tms.is_perfect(28)\nprint(result)",
+    "True"
+  ],
+  "is_abundant(n)": [
+    "result = tms.is_abundant(12)\nprint(result)",
+    "True"
+  ],
+  "is_deficient(n)": [
+    "result = tms.is_deficient(8)\nprint(result)",
+    "True"
+  ],
+  "euler_totient(n)": [
+    "result = tms.euler_totient(10)\nprint(result)",
+    "4"
+  ],
+  "mobius(n)": [
+    "result = tms.mobius(30)\nprint(result)",
+    "-1"
+  ],
+  "lucas(n)": [
+    "result = tms.lucas(10)\nprint(result)",
+    "123"
+  ],
+  "tribonacci(n)": [
+    "result = tms.tribonacci(10)\nprint(result)",
+    "274"
+  ],
+  "catalan(n)": [
+    "result = tms.catalan(5)\nprint(result)",
+    "42"
+  ],
+  "bernoulli(n)": [
+    "result = tms.bernoulli(4)\nprint(result)",
+    "-0.03333333333333399"
+  ],
+  "harmonic(n)": [
+    "result = tms.harmonic(5)\nprint(result)",
+    "2.283333333333333"
+  ],
+  "digit_sum(n)": [
+    "result = tms.digit_sum(12345)\nprint(result)",
+    "15"
+  ],
+  "digit_product(n)": [
+    "result = tms.digit_product(1234)\nprint(result)",
+    "24"
+  ],
+  "digital_root(n)": [
+    "result = tms.digital_root(9876)\nprint(result)",
+    "3"
+  ],
+  "is_palindrome_number(n)": [
+    "result = tms.is_palindrome_number(12321)\nprint(result)",
+    "True"
+  ],
+  "is_armstrong(n)": [
+    "result = tms.is_armstrong(153)\nprint(result)",
+    "True"
+  ],
+  "collatz_length(n)": [
+    "result = tms.collatz_length(13)\nprint(result)",
+    "9"
+  ],
+  "is_power_of_two(n)": [
+    "result = tms.is_power_of_two(16)\nprint(result)",
+    "True"
+  ],
+  "bit_length(n)": [
+    "result = tms.bit_length(255)\nprint(result)",
+    "8"
+  ],
+  "popcount(n)": [
+    "result = tms.popcount(255)\nprint(result)",
+    "8"
+  ],
+  "sieve_of_eratosthenes(limit)": [
+    "result = tms.sieve_of_eratosthenes(30)\nprint(result)",
+    "[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]"
+  ],
+  "count_primes_below(limit)": [
+    "result = tms.count_primes_below(30)\nprint(result)",
+    "10"
+  ],
+  "goldbach_pair(n)": [
+    "result = tms.goldbach_pair(28)\nprint(result)",
+    "(5, 23)"
+  ],
+  "find_amicable_pairs(limit)": [
+    "result = tms.find_amicable_pairs(1000)\nprint(result)",
+    "[(220, 284)]"
+  ],
+  "triangular_number(n)": [
+    "result = tms.triangular_number(7)\nprint(result)",
+    "28"
+  ],
+  "square_number(n)": [
+    "result = tms.square_number(7)\nprint(result)",
+    "49"
+  ],
+  "pentagonal_number(n)": [
+    "result = tms.pentagonal_number(4)\nprint(result)",
+    "22"
+  ],
+  "hexagonal_number(n)": [
+    "result = tms.hexagonal_number(4)\nprint(result)",
+    "28"
+  ],
+  "heptagonal_number(n)": [
+    "result = tms.heptagonal_number(4)\nprint(result)",
+    "34"
+  ],
+  "octagonal_number(n)": [
+    "result = tms.octagonal_number(4)\nprint(result)",
+    "40"
+  ],
+  "is_triangular(n)": [
+    "result = tms.is_triangular(15)\nprint(result)",
+    "True"
+  ],
+  "is_square(n)": [
+    "result = tms.is_square(16)\nprint(result)",
+    "True"
+  ],
+  "is_pentagonal(n)": [
+    "result = tms.is_pentagonal(12)\nprint(result)",
+    "True"
+  ],
+  "pascal_triangle_row(n)": [
+    "result = tms.pascal_triangle_row(5)\nprint(result)",
+    "[1, 5, 10, 10, 5, 1]"
+  ],
+  "pascal_triangle(rows)": [
+    "result = tms.pascal_triangle(5)\nprint(result)",
+    "[[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]"
+  ],
+  "sum_of_squares(n)": [
+    "result = tms.sum_of_squares(5)\nprint(result)",
+    "55"
+  ],
+  "sum_of_cubes(n)": [
+    "result = tms.sum_of_cubes(5)\nprint(result)",
+    "225"
+  ],
+  "is_perfect_square_fast(n)": [
+    "result = tms.is_perfect_square_fast(144)\nprint(result)",
+    "True"
+  ],
+  "geometric_mean(data)": [
+    "result = tms.geometric_mean([1, 2, 4, 8])\nprint(result)",
+    "2.8284271247461876"
+  ],
+  "harmonic_mean(data)": [
+    "result = tms.harmonic_mean([1, 2, 4])\nprint(result)",
+    "1.7142857142857142"
+  ],
+  "median_low(data)": [
+    "result = tms.median_low([1, 3, 2, 4])\nprint(result)",
+    "2"
+  ],
+  "median_high(data)": [
+    "result = tms.median_high([1, 3, 2, 4])\nprint(result)",
+    "3"
+  ],
+  "multimode(data)": [
+    "result = tms.multimode([1, 1, 2, 2, 3])\nprint(result)",
+    "[1, 2]"
+  ],
+  "pvariance(data, mu=None)": [
+    "result = tms.pvariance([1, 2, 3, 4])\nprint(result)",
+    "1.25"
+  ],
+  "pstdev(data, mu=None)": [
+    "result = tms.pstdev([1, 2, 3, 4])\nprint(result)",
+    "1.118033988749895"
+  ],
+  "quantiles(data, n=4)": [
+    "result = tms.quantiles([1, 2, 3, 4, 5, 6, 7, 8])\nprint(result)",
+    "[2.75, 4.5, 6.25]"
+  ],
+  "range_(data)": [
+    "result = tms.range_([1, 9, 4, 2])\nprint(result)",
+    "8"
+  ],
+  "midrange(data)": [
+    "result = tms.midrange([1, 9, 4, 2])\nprint(result)",
+    "5.0"
+  ],
+  "skewness(data)": [
+    "result = tms.skewness([1, 2, 3, 4, 5])\nprint(result)",
+    "0.0"
+  ],
+  "kurtosis(data)": [
+    "result = tms.kurtosis([1, 2, 3, 4, 5])\nprint(result)",
+    "-1.2999999999999996"
+  ],
+  "normal_pdf(x, mu=0.0, sigma=1.0)": [
+    "result = tms.normal_pdf(0)\nprint(result)",
+    "0.39894228040143265"
+  ],
+  "normal_cdf(x, mu=0.0, sigma=1.0)": [
+    "result = tms.normal_cdf(0)\nprint(result)",
+    "0.5000000005"
+  ],
+  "rotation_matrix_2d(theta)": [
+    "result = tms.rotation_matrix_2d(tms.PI / 2)\nprint(result)",
+    "Matrix([[4.5907218229751464e-17, -1.0000000000000002], [1.0000000000000002, 4.5907218229751464e-17]])"
+  ],
+  "rotation_matrix_x(theta)": [
+    "result = tms.rotation_matrix_x(tms.PI / 2)\nprint(result)",
+    "Matrix([[1, 0, 0], [0, 4.5907218229751464e-17, -1.0000000000000002], [0, 1.0000000000000002, 4.5907218229751464e-17]])"
+  ],
+  "rotation_matrix_y(theta)": [
+    "result = tms.rotation_matrix_y(tms.PI / 2)\nprint(result)",
+    "Matrix([[4.5907218229751464e-17, 0, 1.0000000000000002], [0, 1, 0], [-1.0000000000000002, 0, 4.5907218229751464e-17]])"
+  ],
+  "rotation_matrix_z(theta)": [
+    "result = tms.rotation_matrix_z(tms.PI / 2)\nprint(result)",
+    "Matrix([[4.5907218229751464e-17, -1.0000000000000002, 0], [1.0000000000000002, 4.5907218229751464e-17, 0], [0, 0, 1]])"
+  ],
+  "circle_area(r)": [
+    "result = tms.circle_area(3)\nprint(result)",
+    "28.274333882308138"
+  ],
+  "circle_circumference(r)": [
+    "result = tms.circle_circumference(3)\nprint(result)",
+    "18.84955592153876"
+  ],
+  "sphere_volume(r)": [
+    "result = tms.sphere_volume(3)\nprint(result)",
+    "113.09733552923254"
+  ],
+  "sphere_surface_area(r)": [
+    "result = tms.sphere_surface_area(3)\nprint(result)",
+    "113.09733552923255"
+  ],
+  "polygon_area_shoelace(points)": [
+    "result = tms.polygon_area_shoelace([(0, 0), (4, 0), (4, 3)])\nprint(result)",
+    "6.0"
+  ],
+  "centroid(points)": [
+    "result = tms.centroid([(0, 0), (4, 0), (4, 3)])\nprint(result)",
+    "(2.6666666666666665, 1.0)"
+  ],
+  "taylor_series_exp(x, terms=20)": [
+    "result = tms.taylor_series_exp(1)\nprint(result)",
+    "2.7182818284590455"
+  ],
+  "convert_celsius_to_fahrenheit(c)": [
+    "result = tms.convert_celsius_to_fahrenheit(0)\nprint(result)",
+    "32.0"
+  ],
+  "convert_fahrenheit_to_celsius(f)": [
+    "result = tms.convert_fahrenheit_to_celsius(32)\nprint(result)",
+    "0.0"
+  ],
+  "convert_celsius_to_kelvin(c)": [
+    "result = tms.convert_celsius_to_kelvin(0)\nprint(result)",
+    "273.15"
+  ],
+  "convert_kelvin_to_celsius(k)": [
+    "result = tms.convert_kelvin_to_celsius(273.15)\nprint(result)",
+    "0.0"
+  ],
+  "convert_km_to_miles(km)": [
+    "result = tms.convert_km_to_miles(1)\nprint(result)",
+    "0.621371"
+  ],
+  "convert_miles_to_km(miles)": [
+    "result = tms.convert_miles_to_km(1)\nprint(result)",
+    "1.6093444978925633"
+  ],
+  "convert_kg_to_pounds(kg)": [
+    "result = tms.convert_kg_to_pounds(1)\nprint(result)",
+    "2.20462"
+  ],
+  "convert_pounds_to_kg(lb)": [
+    "result = tms.convert_pounds_to_kg(1)\nprint(result)",
+    "0.45359290943563974"
+  ],
+  "continued_fraction(x, depth=15)": [
+    "result = tms.continued_fraction(3.245)\nprint(result)",
+    "[3, 4, 12, 3, 1, 247777268231, 4, 1, 2, 1, 2, 1, 34, 1, 3]"
+  ],
+  "convergent_from_continued_fraction(terms)": [
+    "result = tms.convergent_from_continued_fraction([1, 2, 2])\nprint(result)",
+    "(7, 5)"
+  ],
+  "lcg_random(seed, a=1103515245, c=12345, m=2 ** 31)": [
+    "result = tms.lcg_random(2, 2, 2, 2)\nprint(result)",
+    "0"
+  ],
+  "lcg_sequence(seed, n, a=1103515245, c=12345, m=2 ** 31)": [
+    "result = tms.lcg_sequence(2, 2, 2, 2, 2)\nprint(result)",
+    "[0, 0]"
+  ],
+  "to_base(n, base)": [
+    "result = tms.to_base(2, 2)\nprint(result)",
+    "'10'"
+  ],
+  "int_to_roman(n)": [
+    "result = tms.int_to_roman(2)\nprint(result)",
+    "'II'"
+  ],
+  "arithmetic_series_sum(a1, d, n)": [
+    "result = tms.arithmetic_series_sum(2, 2, 2)\nprint(result)",
+    "6.0"
+  ],
+  "geometric_series_sum(a1, r, n)": [
+    "result = tms.geometric_series_sum(2, 2, 2)\nprint(result)",
+    "6.0"
+  ],
+  "lerp(a, b, t)": [
+    "result = tms.lerp(2, 2, 2)\nprint(result)",
+    "2"
+  ],
+  "clamp(x, lo, hi)": [
+    "result = tms.clamp(2, 2, 2)\nprint(result)",
+    "2"
+  ],
+  "sign(x)": [
+    "result = tms.sign(2)\nprint(result)",
+    "1"
+  ],
+  "relu(x)": [
+    "result = tms.relu(2)\nprint(result)",
+    "2"
+  ],
+  "sigmoid(x)": [
+    "result = tms.sigmoid(2)\nprint(result)",
+    "0.8807970779778825"
+  ],
+  "softplus(x)": [
+    "result = tms.softplus(2)\nprint(result)",
+    "2.1269280110429714"
+  ],
+  "tanh_derivative(x)": [
+    "result = tms.tanh_derivative(2)\nprint(result)",
+    "0.07065082485316443"
+  ],
+  "sigmoid_derivative(x)": [
+    "result = tms.sigmoid_derivative(2)\nprint(result)",
+    "0.10499358540350645"
+  ],
+  "poly_roots_cubic(a, b, c, d)": [
+    "result = tms.poly_roots_cubic(2, 2, 2, 2)\nprint(result)",
+    "(-0.9999999999999998, (-5.551115123125783e-17, 1.0), (-5.551115123125783e-17, -1.0))"
+  ],
+  "poly_chebyshev_t(n)": [
+    "result = tms.poly_chebyshev_t(2)\nprint(result)",
+    "[2.0, 0.0, -1.0]"
+  ],
+  "poly_legendre(n)": [
+    "result = tms.poly_legendre(2)\nprint(result)",
+    "[1.5, 0.0, -0.5]"
+  ],
+  "poly_hermite(n)": [
+    "result = tms.poly_hermite(2)\nprint(result)",
+    "[4.0, 0.0, -2.0]"
+  ],
+  "poly_laguerre(n)": [
+    "result = tms.poly_laguerre(2)\nprint(result)",
+    "[1.5, 0.0, 0.0]"
+  ],
+  "is_prime_miller_rabin(n, witnesses=None)": [
+    "result = tms.is_prime_miller_rabin(2, 2)\nprint(result)",
+    "True"
+  ],
+  "diffie_hellman_shared_secret(public_other, private_self, p)": [
+    "result = tms.diffie_hellman_shared_secret(2, 2, 2)\nprint(result)",
+    "0"
+  ],
+  "checksum_sum(data)": [
+    "result = tms.checksum_sum([1, 2, 3, 4])\nprint(result)",
+    "10"
+  ],
+  "checksum_xor(data)": [
+    "result = tms.checksum_xor([1, 2, 3, 4])\nprint(result)",
+    "4"
+  ],
+  "luhn_check(number)": [
+    "result = tms.luhn_check(2)\nprint(result)",
+    "False"
+  ],
+  "luhn_generate(partial)": [
+    "result = tms.luhn_generate(2)\nprint(result)",
+    "26"
+  ],
+  "graph_complete(n)": [
+    "result = tms.graph_complete(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C4A32C550>"
+  ],
+  "graph_cycle(n)": [
+    "result = tms.graph_cycle(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C4A32C2D0>"
+  ],
+  "graph_path(n)": [
+    "result = tms.graph_path(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C49EAAFD0>"
+  ],
+  "graph_star(n)": [
+    "result = tms.graph_star(2)\nprint(result)",
+    "<taha_math_shiraz.graph.Graph object at 0x0000022C49EAB6F0>"
+  ],
+  "selection_sort(arr)": [
+    "result = tms.selection_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "insertion_sort(arr)": [
+    "result = tms.insertion_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "merge_sort(arr)": [
+    "result = tms.merge_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "quick_sort(arr)": [
+    "result = tms.quick_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "heap_sort(arr)": [
+    "result = tms.heap_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "counting_sort(arr, max_val=None)": [
+    "result = tms.counting_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "radix_sort(arr)": [
+    "result = tms.radix_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "shell_sort(arr)": [
+    "result = tms.shell_sort([3, 1, 2])\nprint(result)",
+    "[1, 2, 3]"
+  ],
+  "bucket_sort(arr, num_buckets=10)": [
+    "result = tms.bucket_sort([0.42, 0.32, 0.23])\nprint(result)",
+    "[0.23, 0.32, 0.42]"
+  ],
+  "longest_increasing_subsequence(arr)": [
+    "result = tms.longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18])\nprint(result)",
+    "4"
+  ],
+  "max_subarray(arr)": [
+    "result = tms.max_subarray([1, 2, 3, 4])\nprint(result)",
+    "10"
+  ],
+  "max_subarray_indices(arr)": [
+    "result = tms.max_subarray_indices([1, 2, 3, 4])\nprint(result)",
+    "(0, 3, 10)"
+  ],
+  "two_sum(arr, target)": [
+    "result = tms.two_sum([1, 2, 3, 4], 2)\nprint(result)",
+    "None"
+  ],
+  "three_sum(arr, target)": [
+    "result = tms.three_sum([1, 2, 3, 4], 2)\nprint(result)",
+    "[]"
+  ],
+  "flatten(nested)": [
+    "result = tms.flatten(2)\nprint(result)",
+    "[2]"
+  ],
+  "rotate_list(arr, k)": [
+    "result = tms.rotate_list([1, 2, 3, 4], 2)\nprint(result)",
+    "[3, 4, 1, 2]"
+  ],
+  "chunk_list(arr, size)": [
+    "result = tms.chunk_list([1, 2, 3, 4], 2)\nprint(result)",
+    "[[1, 2], [3, 4]]"
+  ],
+  "sliding_window_max(arr, k)": [
+    "result = tms.sliding_window_max([1, 2, 3, 4], 2)\nprint(result)",
+    "[2, 3, 4]"
+  ],
+  "sliding_window_sum(arr, k)": [
+    "result = tms.sliding_window_sum([1, 2, 3, 4], 2)\nprint(result)",
+    "[3, 5, 7]"
+  ],
+  "running_average(arr)": [
+    "result = tms.running_average([1, 2, 3, 4])\nprint(result)",
+    "[1.0, 1.5, 2.0, 2.5]"
+  ],
+  "cumulative_sum(arr)": [
+    "result = tms.cumulative_sum([1, 2, 3, 4])\nprint(result)",
+    "[1, 3, 6, 10]"
+  ],
+  "cumulative_product(arr)": [
+    "result = tms.cumulative_product([1, 2, 3, 4])\nprint(result)",
+    "[1, 2, 6, 24]"
+  ],
+  "moving_average(arr, window)": [
+    "result = tms.moving_average([1, 2, 3, 4], 2)\nprint(result)",
+    "[1.5, 2.5, 3.5]"
+  ],
+  "difference_array(arr)": [
+    "result = tms.difference_array([1, 2, 3, 4])\nprint(result)",
+    "[1, 1, 1]"
+  ],
+  "second_difference_array(arr)": [
+    "result = tms.second_difference_array([1, 2, 3, 4])\nprint(result)",
+    "[0, 0]"
+  ]
+};
+
+    function exampleFor(name) {
+      const n = name.split('(')[0];
+      if (examples[n]) return examples[n];
+      if (generatedOutputs[name]) return generatedOutputs[name];
+      const arity = (name.match(/,/g) || []).length + (name.includes('(') ? 1 : 0);
+      const args = arity > 0 ? Array.from({ length: Math.min(arity, 3) }, (_, i) => i + 1).join(', ') : '';
+      const call = args ? `tms.${n}(${args})` : `tms.${n}()`;
+      return [`result = ${call}\nprint(result)`, `computed from sample inputs for ${n}`];
+    }
+
+    function inputSummary(signature) {
+      const inside = signature.includes('(') ? signature.slice(signature.indexOf('(') + 1, signature.lastIndexOf(')')) : '';
+      if (!inside.trim()) return 'Inputs: none';
+      return 'Inputs: ' + inside.replace(/\s*=\s*/g, ' = ');
+    }
+
+    function rowHTML(item) {
+      const [name, desc] = item;
+      const [example, output] = exampleFor(name);
+      return `<tr><td><code>${name}</code></td><td>${desc}<div class="param">${inputSummary(name)}</div></td><td><div class="sample"><span class="sample-label">Example</span><pre><code>${example}</code></pre><div class="output"><strong>Output</strong><code>${output}</code></div></div></td></tr>`;
+    }
+
+    docs.forEach(([id, title, file, items], idx) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="#${id}">${title}</a>`;
+      tocList.appendChild(li);
+
+      const section = document.createElement('section');
+      section.id = id;
+      section.innerHTML = `
+        <h2>${title}</h2>
+        <div class="module">
+          <div class="module-head">${file}</div>
+          <div class="module-intro"><p>${moduleNotes[id] || ''}</p></div>
+          <table>
+            <thead><tr><th>Name</th><th>Description</th><th>Example and Output</th></tr></thead>
+            <tbody>${items.map(rowHTML).join('')}</tbody>
+          </table>
+        </div>
+      `;
+      content.appendChild(section);
+      section.style.setProperty('--reveal-delay', `${90 + idx * 45}ms`);
+    });
+
+    const extra = document.createElement('section');
+    extra.id = 'usage';
+    extra.style.setProperty('--reveal-delay', `${90 + docs.length * 45}ms`);
+    extra.innerHTML = `
+      <h2>Usage and Summary</h2>
+      <p>Because everything is re-exported in <code>__init__.py</code>, the easiest way to use the package is. This keeps startup code short, readable, and convenient when you want the full API without long import chains.</p>
+      <pre><code>import taha_math_shiraz as tms
+
+print(tms.PI)
+print(tms.sin(tms.PI / 2))
+print(tms.mean([1, 2, 3, 4]))</code></pre>
+      <p>You can also import specific modules directly when you only need one part of the library. That approach is useful when you want a clean namespace and only need a focused subsystem such as graphs, statistics, or cryptography.</p>
+    `;
+    content.appendChild(extra);
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="#usage">Usage and Summary</a>`;
+    tocList.appendChild(li);
+
+    const filter = document.getElementById('filter');
+    const blocks = Array.from(document.querySelectorAll('section, .note'));
+    const normalize = (value) => value
+      .toString()
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[_\-().,;:\/\\[\]{}<>!?'"`~@#$%^&*=+|]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    const compact = (value) => normalize(value).replace(/\s+/g, '');
+    const levenshtein = (a, b) => {
+      if (a === b) return 0;
+      if (!a) return b.length;
+      if (!b) return a.length;
+      let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+      for (let i = 1; i <= a.length; i++) {
+        const curr = [i];
+        for (let j = 1; j <= b.length; j++) {
+          curr[j] = Math.min(
+            prev[j] + 1,
+            curr[j - 1] + 1,
+            prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
+          );
+        }
+        prev = curr;
+      }
+      return prev[b.length];
+    };
+    const similarity = (query, text) => {
+      if (!query || !text) return 0;
+      const q = compact(query);
+      const t = compact(text);
+      if (!q || !t) return 0;
+      if (t.includes(q) || q.includes(t)) return 1;
+      if (t.startsWith(q) || q.startsWith(t)) return 0.95;
+      if (q.length <= 2) return t.split(' ').some(part => part.startsWith(q)) ? 0.85 : 0;
+      const words = normalize(text).split(' ').filter(Boolean);
+      const bestWord = words.reduce((best, word) => {
+        const qw = compact(word);
+        const score = qw ? 1 - (levenshtein(q, qw) / Math.max(q.length, qw.length)) : 0;
+        return Math.max(best, score);
+      }, 0);
+      const whole = 1 - (levenshtein(q, t) / Math.max(q.length, t.length));
+      return Math.max(bestWord, whole);
+    };
+    const matches = (query, text) => {
+      const q = normalize(query);
+      if (!q) return true;
+      const searchable = normalize(text);
+      if (searchable.includes(q)) return true;
+      return q.split(' ').filter(Boolean).some(part => similarity(part, searchable) >= 0.62);
+    };
+    filter.addEventListener('input', function () {
+      const term = this.value.trim().toLowerCase();
+      blocks.forEach(el => el.classList.toggle('hidden', term && !matches(term, el.textContent)));
+    });
+
+    const links = Array.from(document.querySelectorAll('.toc a'));
+    links.forEach(link => link.addEventListener('click', () => {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    }));
+
+    const targets = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-35% 0px -60% 0px', threshold: 0.01 });
+    targets.forEach(t => obs.observe(t));
+  </script>
+</body>
+</html>
