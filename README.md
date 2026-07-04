@@ -2021,7 +2021,6 @@ print(tms.Graph())
 
 - **`second_difference_array(arr)`** — Second difference array
 
-  create by tahazare
 
 ---
 
@@ -2038,3 +2037,6 @@ print(tms.mean([1, 2, 3, 4]))
 ```
 
 You can also import specific modules directly when you only need one part of the library. That approach is useful when you want a clean namespace and only need a focused subsystem such as graphs, statistics, or cryptography.
+
+
+### created by tahazare
