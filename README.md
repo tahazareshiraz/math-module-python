@@ -2021,6 +2021,8 @@ print(tms.Graph())
 
 - **`second_difference_array(arr)`** — Second difference array
 
+  create by tahazare
+
 ---
 
 ## Usage and Summary
